@@ -36,6 +36,9 @@ const theme = {
 };
 
 const ThemeWrapper = styled.div`
+h2{
+    font-size:2.1875rem
+}
 a{
     text-decoration:none;
 }

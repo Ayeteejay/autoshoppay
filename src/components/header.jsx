@@ -5,16 +5,63 @@ import Logo from '../images/autoshoppay-logo-dark.svg';
 
 const Container = styled.div`
 display:flex;
+flex-flow:column;
 justify-content:center;
 align-items:center;
 `
 
-const Row = styled.div`
+const Desktop = styled.div`
 width:90%;
 display:flex;
+background:${props=>props.theme.primaryColors.frost};
 justify-content:space-between;
 align-items:center;
 padding:1em 0;
+z-index:999;
+position:relative;
+`
+
+const Mobile = styled.div`
+    width:100%;
+    .mobile-container{
+        background:${props=>props.theme.primaryColors.aspBlue};
+        width:100%;
+        align-items:center;
+        justify-content:center;
+        display:flex;
+        transition:${props=>props.theme.animationSpeeds.fast};        
+        transform:translate(0,5vh);
+        visibility:hidden;
+        height:0;
+    }
+        .mobile-row{
+            width:90%;
+            height:100vh;
+            transition:${props=>props.theme.animationSpeeds.fast};
+            ul{
+                list-style:none;
+                display:flex;
+                flex-flow:column;
+            }
+            li{
+                padding:0.5rem 0;
+                a{
+                    color:${props=>props.theme.primaryColors.frost};
+                    font-size:1.5rem;
+                }
+            }
+            
+        }
+    .hide{
+        visibility:hidden;
+        transform:translate(0,5vh);
+        height:0;
+    }
+    .show{
+        height:100%;
+        visibility:visible;
+        transform:translate(0,0);
+    }
 `
 
 const LogoCol = styled.div`
@@ -94,17 +141,20 @@ const Header = ({data}) =>{
         if(windowSize.width > 992){
             setIsDesktop(true);
         }else{            
-            setIsDesktop(false);            
+            setIsDesktop(false);     
+            setMobileMenu(false);       
         }
     },[windowSize.width]);
-    // End of above Hook
 
     // Open mobile dropdown menu
     const openMobileMenu = () =>{
+        const mobileContainer = document.querySelector(".mobile-container");
         if(mobileMenu === false){
-            setMobileMenu(true);
+            setMobileMenu(true);               
+            mobileContainer.className = "mobile-container show";
         }else if(mobileMenu){
             setMobileMenu(false);
+            mobileContainer.className = "mobile-container hide";
         };
     };
     return (
@@ -131,7 +181,7 @@ const Header = ({data}) =>{
             }
             render={props=>(              
                 <React.Fragment>
-                    <Row>
+                <Desktop>
                     <LogoCol>
                         <Link to="/">
                             <img src={Logo} alt="AutoShopPay Logo" className="logo"/>
@@ -159,10 +209,28 @@ const Header = ({data}) =>{
                         <span className="meat"></span>
                         <span className="bottomPatty"></span>
                     </Whopper>
-                </Row>
-                <Row style={{display: mobileMenu === true ? "block" : "none"}}>
-                            <h1>Mobile activated</h1>
-                </Row>           
+                </Desktop>
+                <Mobile>
+                    <div className="mobile-container" style={{opacity: mobileMenu ? "1" : "0"}}>
+                        <div className="mobile-row">
+                            <ul>     
+                                {props.allWpMenu.edges[0].node.menuItems.nodes.map((value,index)=>{
+                                    const totalLinks = props.allWpMenu.edges[0].node.menuItems.nodes.length - 1;
+                                    if(index !== totalLinks){
+                                        return (
+                                            <li key={value.id}><a href={value.url} className="header" >{value.label}</a></li>
+                                        )
+                                    }
+                                    else{
+                                        return (
+                                            <li key={value.id}><a href={value.url} className="amber-cta" >{value.label}</a></li>
+                                        )
+                                    }
+                                })}               
+                            </ul>
+                        </div>  
+                    </div>
+                </Mobile>           
             </React.Fragment>   
             )}
             />
