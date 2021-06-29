@@ -42,16 +42,11 @@ li{
 @media (min-width:${props=>props.theme.breakPoints.lg}){
     display:block;
 }
-.desktop{
-color:blue
-}
-.mobile{
-    color:red
-}
 `
 const Whopper = styled.div`
 padding:0 2rem 0 0;
 position:relative;
+cursor:pointer;
 display:block;
   .topPatty,.meat,.bottomPatty{
       position:absolute;
@@ -71,7 +66,10 @@ display:block;
 `
 
 const Header = ({data}) =>{
-    const [isDesktop,setIsDesktop] = useState(true);
+    const [isDesktop, setIsDesktop] = useState(true);
+    const [mobileMenu, setMobileMenu] = useState(false);
+
+    // Hook for checking window size and height
     const [windowSize, setWindowSize] = useState({
         width: undefined,
         height: undefined,
@@ -90,23 +88,25 @@ const Header = ({data}) =>{
         }, []);
         return windowSize;
     };
-    // For displaying size of window
-    // const size = useWindowSize();
-
-    // Working on this to check window size
+    const size = useWindowSize();
     useEffect(()=>{
         const linkMenu = document.querySelectorAll("ul")[0];
-        
         if(windowSize.width > 992){
-            
             setIsDesktop(true);
-            linkMenu.className = "desktop";
-        }else{
-            
-            setIsDesktop(false);
-            linkMenu.className = "mobile";
+        }else{            
+            setIsDesktop(false);            
         }
-    })
+    },[windowSize.width]);
+    // End of above Hook
+
+    // Open mobile dropdown menu
+    const openMobileMenu = () =>{
+        if(mobileMenu === false){
+            setMobileMenu(true);
+        }else if(mobileMenu){
+            setMobileMenu(false);
+        };
+    };
     return (
         <Container>
             <StaticQuery query={
@@ -129,36 +129,41 @@ const Header = ({data}) =>{
                 }    
                 `
             }
-            render={props=>(                
-                <Row>
-                <LogoCol>
-                    <Link to="/">
-                        <img src={Logo} alt="AutoShopPay Logo" className="logo"/>
-                    </Link>
-                </LogoCol>
-                <DesktopLinkCol>
-                    <ul>     
-                        {props.allWpMenu.edges[0].node.menuItems.nodes.map((value,index)=>{
-                            const totalLinks = props.allWpMenu.edges[0].node.menuItems.nodes.length - 1;
-                            if(index !== totalLinks){
-                                return (
-                                    <li key={value.id}><a href={value.url} className="header" >{value.label}</a></li>
-                                )
-                            }
-                            else{
-                                return (
-                                    <li key={value.id}><a href={value.url} className="amber-cta" >{value.label}</a></li>
-                                )
-                            }
-                        })}               
-                    </ul>
-                </DesktopLinkCol>                
-                <Whopper>
-                    <span className="topPatty"></span>
-                    <span className="meat"></span>
-                    <span className="bottomPatty"></span>
-                </Whopper>
-            </Row>
+            render={props=>(              
+                <React.Fragment>
+                    <Row>
+                    <LogoCol>
+                        <Link to="/">
+                            <img src={Logo} alt="AutoShopPay Logo" className="logo"/>
+                        </Link>
+                    </LogoCol>
+                    <DesktopLinkCol>
+                        <ul>     
+                            {props.allWpMenu.edges[0].node.menuItems.nodes.map((value,index)=>{
+                                const totalLinks = props.allWpMenu.edges[0].node.menuItems.nodes.length - 1;
+                                if(index !== totalLinks){
+                                    return (
+                                        <li key={value.id}><a href={value.url} className="header" >{value.label}</a></li>
+                                    )
+                                }
+                                else{
+                                    return (
+                                        <li key={value.id}><a href={value.url} className="amber-cta" >{value.label}</a></li>
+                                    )
+                                }
+                            })}               
+                        </ul>
+                    </DesktopLinkCol>                
+                    <Whopper onClick={()=>openMobileMenu()}>
+                        <span className="topPatty"></span>
+                        <span className="meat"></span>
+                        <span className="bottomPatty"></span>
+                    </Whopper>
+                </Row>
+                <Row style={{display: mobileMenu === true ? "block" : "none"}}>
+                            <h1>Mobile activated</h1>
+                </Row>           
+            </React.Fragment>   
             )}
             />
         </Container>
