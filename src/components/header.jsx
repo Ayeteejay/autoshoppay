@@ -9,6 +9,9 @@ display:flex;
 flex-flow:column;
 justify-content:center;
 align-items:center;
+position:fixed;
+width:100%;
+background:${props=>props.theme.primaryColors.frost};
 `
 
 const Desktop = styled.div`
@@ -25,7 +28,8 @@ position:relative;
 const Mobile = styled.div`
     width:100%;
     .mobile-container{
-        background-color:${props=>props.theme.primaryColors.aspBlue};
+        // background-color:${props=>props.theme.primaryColors.aspBlue};
+        background-color:rgba(0,54,255,0.98);
         background-image:url(${Background});
         background-repeat:no-repeat;
         background-position:350% 275%;
@@ -35,9 +39,9 @@ const Mobile = styled.div`
         justify-content:center;
         display:flex;
         transition:${props=>props.theme.animationSpeeds.fast};        
-        transform:translate(0,5vh);
         visibility:hidden;
         height:0;
+        position:fixed;
     }
         .mobile-row{
             width:80%;
@@ -65,13 +69,11 @@ const Mobile = styled.div`
         }
     .hide{
         visibility:hidden;
-        transform:translate(0,5vh);
         height:0;
     }
     .show{
         height:100%;
         visibility:visible;
-        transform:translate(0,0);
     }
 `
 
