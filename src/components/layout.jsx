@@ -31,7 +31,7 @@ const theme = {
     animationSpeeds:{
         slow:"2s",
         normal:"1s",
-        fast:"500ms",
+        fast:"250ms",
     }
 };
 
@@ -55,11 +55,17 @@ a.header{
     border:1px solid ${props=>props.theme.primaryColors.amber};
     background:${props=>props.theme.primaryColors.amber};
     color:${props=>props.theme.primaryColors.frost};
-    padding:1rem 1.75rem;
     transition:${props=>props.theme.animationSpeeds.fast};
+    display:flex;
+    justify-content:center;
+    padding:1rem 0;
     &:hover{
         background:none;
         color:${props=>props.theme.primaryColors.amber};
+    }
+    @media(min-width:${props=>props.theme.breakPoints.lg}){
+        padding:1rem 1.75rem;
+        display:inline;
     }
 }
 `

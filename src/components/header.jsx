@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import {Link, graphql, StaticQuery} from 'gatsby';
 import Logo from '../images/autoshoppay-logo-dark.svg';
+import Background from '../images/autoshoppay-background.svg';
 
 const Container = styled.div`
 display:flex;
@@ -24,7 +25,11 @@ position:relative;
 const Mobile = styled.div`
     width:100%;
     .mobile-container{
-        background:${props=>props.theme.primaryColors.aspBlue};
+        background-color:${props=>props.theme.primaryColors.aspBlue};
+        background-image:url(${Background});
+        background-repeat:no-repeat;
+        background-position:350% 275%;
+        background-size:90% 90%;
         width:100%;
         align-items:center;
         justify-content:center;
@@ -35,22 +40,25 @@ const Mobile = styled.div`
         height:0;
     }
         .mobile-row{
-            width:90%;
-            height:100vh;
+            width:80%;
+            height:100vh;     
+            padding:2rem 0;
             transition:${props=>props.theme.animationSpeeds.fast};
             ul{
                 list-style:none;
                 display:flex;
-                flex-flow:column;
+                flex-flow:column;                
             }
             li{
-                padding:0.5rem 0;
-                a{
-                    color:${props=>props.theme.primaryColors.frost};
-                    font-size:1.5rem;
+                padding:0.75rem 0;
+                &:not(:last-child){
+                    a{
+                        color:${props=>props.theme.primaryColors.frost};
+                        font-size:1.5rem;                
+                    }
                 }
-            }
-            
+           
+            }            
         }
     .hide{
         visibility:hidden;
@@ -228,6 +236,7 @@ const Header = ({data}) =>{
                                     }
                                 })}               
                             </ul>
+                            
                         </div>  
                     </div>
                 </Mobile>           
