@@ -54,7 +54,10 @@ const Mobile = styled.div`
                 &:not(:last-child){
                     a{
                         color:${props=>props.theme.primaryColors.frost};
-                        font-size:1.5rem;                
+                        font-size:1.5rem;
+                        &:hover{
+                            color:${props=>props.theme.primaryColors.amber};
+                        }                
                     }
                 }
            
@@ -103,17 +106,32 @@ padding:0 2rem 0 0;
 position:relative;
 cursor:pointer;
 display:block;
-  .topPatty,.meat,.bottomPatty{
+height:16px;
+  .topBun,.meat,.bottomBun{
       position:absolute;
       background:${props=>props.theme.primaryColors.aspBlue};
+      transition:${props=>props.theme.animationSpeeds.fast};
       height:2px;
       width:30px;
   }
-  .topPatty{
-      top:-8px;
+  .topBun{
+      top:0px;
   }
-  .bottomPatty{
-      top:8px;
+  .meat{
+      top:7px;
+  }
+  .bottomBun{
+  bottom:0px;
+  }
+  .burger-flip{
+      transform:translate(0,4px) rotate(-45deg);
+  }
+  .burger-revert{
+      transform:translate(0,-10px) rotate(45deg);
+  }
+  .smash-burger{
+      opacity:0;
+      transform:translate(0,-5px);
   }
   @media(min-width:${props=>props.theme.breakPoints.lg}){
       display:none;
@@ -157,12 +175,21 @@ const Header = ({data}) =>{
     // Open mobile dropdown menu
     const openMobileMenu = () =>{
         const mobileContainer = document.querySelector(".mobile-container");
+        const bunTop = document.querySelector(".topBun");
+        const burgerMiddle = document.querySelector(".meat");
+        const bunBottom = document.querySelector(".bottomBun");
         if(mobileMenu === false){
             setMobileMenu(true);               
             mobileContainer.className = "mobile-container show";
+            bunTop.className = "topBun burger-flip";
+            burgerMiddle.className = "meat smash-burger";
+            bunBottom.className = "bottomBun burger-revert";
         }else if(mobileMenu){
             setMobileMenu(false);
             mobileContainer.className = "mobile-container hide";
+            bunTop.className = "topBun";
+            burgerMiddle.className = "meat";
+            bunBottom.className ="bottomBun";
         };
     };
     return (
@@ -213,9 +240,9 @@ const Header = ({data}) =>{
                         </ul>
                     </DesktopLinkCol>                
                     <Whopper onClick={()=>openMobileMenu()}>
-                        <span className="topPatty"></span>
+                        <span className="topBun"></span>
                         <span className="meat"></span>
-                        <span className="bottomPatty"></span>
+                        <span className="bottomBun"></span>
                     </Whopper>
                 </Desktop>
                 <Mobile>
