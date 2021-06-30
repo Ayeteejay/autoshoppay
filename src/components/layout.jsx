@@ -29,9 +29,11 @@ const theme = {
         xxl: "1400px",
     },
     animationSpeeds:{
-        slow:"2s",
+        extraSlow:"2s",
+        slow:"1.5s",
         normal:"1s",
-        fast:"250ms",
+        fast:"500ms",
+        extraFast:"250ms",
     }
 };
 

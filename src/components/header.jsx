@@ -67,10 +67,6 @@ const Mobile = styled.div`
            
             }            
         }
-    .hide{
-        visibility:hidden;
-        height:0;
-    }
     .show{
         height:100%;
         visibility:visible;
@@ -180,18 +176,14 @@ const Header = ({data}) =>{
         const bunTop = document.querySelector(".topBun");
         const burgerMiddle = document.querySelector(".meat");
         const bunBottom = document.querySelector(".bottomBun");
+        mobileContainer.classList.toggle("show");
+        bunTop.classList.toggle("burger-flip");
+        burgerMiddle.classList.toggle("smash-burger");
+        bunBottom.classList.toggle("burger-revert");
         if(mobileMenu === false){
             setMobileMenu(true);               
-            mobileContainer.className = "mobile-container show";
-            bunTop.className = "topBun burger-flip";
-            burgerMiddle.className = "meat smash-burger";
-            bunBottom.className = "bottomBun burger-revert";
         }else if(mobileMenu){
-            setMobileMenu(false);
-            mobileContainer.className = "mobile-container hide";
-            bunTop.className = "topBun";
-            burgerMiddle.className = "meat";
-            bunBottom.className ="bottomBun";
+            setMobileMenu(false);        
         };
     };
     return (
