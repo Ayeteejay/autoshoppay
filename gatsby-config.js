@@ -1,13 +1,13 @@
 module.exports = {
   siteMetadata: {
     title: "AutoShopPay",
-    siteUrl: `https://www.autoshoppay.co`,
+    siteUrl: `https://www.autoshoppay.com`,
   },
   plugins: [
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        url: "https://autoshoppay.co/graphql",
+        url: "http://autoshoppay.local/graphql",
       },
     },
     "gatsby-plugin-styled-components",
