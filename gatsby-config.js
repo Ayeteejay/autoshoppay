@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: "AutoShopPay",
-    siteUrl: `https://www.autoshoppay.com`,
+    siteUrl: `http://www.autoshoppay.local`,
   },
   plugins: [
     {

@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import {Link, graphql, StaticQuery} from 'gatsby';
-import Logo from '../images/autoshoppay-logo-dark.svg';
+import DarkLogo from '../images/autoshoppay-logo-dark.svg';
 import Background from '../images/autoshoppay-background.svg';
 
-const Container = styled.div`
+const HeaderContainer = styled.div`
 display:flex;
 flex-flow:column;
 justify-content:center;
@@ -75,11 +75,11 @@ const Mobile = styled.div`
 
 const LogoCol = styled.div`
 .logo{
-    max-width:175px;
+   width:175px;
 }
 @media (min-width:${props=>props.theme.breakPoints.lg}){
     .logo{
-        max-width:250px;   
+       width:250px;   
     }
 }
 `
@@ -187,7 +187,7 @@ const Header = ({data}) =>{
         };
     };
     return (
-        <Container>
+        <HeaderContainer>
             <StaticQuery query={
                 graphql`
                 {
@@ -213,7 +213,7 @@ const Header = ({data}) =>{
                 <Desktop>
                     <LogoCol>
                         <Link to="/">
-                            <img src={Logo} alt="AutoShopPay Logo" className="logo"/>
+                            <img src={DarkLogo} alt="AutoShopPay Logo" className="logo"/>
                         </Link>
                     </LogoCol>
                     <DesktopLinkCol>
@@ -264,7 +264,7 @@ const Header = ({data}) =>{
             </React.Fragment>   
             )}
             />
-        </Container>
+        </HeaderContainer>
     )
 };
 export default Header

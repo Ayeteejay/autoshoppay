@@ -3,6 +3,7 @@ import styled, {ThemeProvider} from 'styled-components';
 import "../styles/global.css"
 
 import Header from './header.jsx';
+import Footer from './footer.jsx';
 
 const theme = {
     primaryColors: {
@@ -34,6 +35,11 @@ const theme = {
         normal:"1s",
         fast:"500ms",
         extraFast:"250ms",
+    },
+    spacing:{
+        topBottom: "5rem 0",
+        bottom: "0 0 5rem 0",
+        top: "5rem 0 0 0",
     }
 };
 
@@ -47,6 +53,13 @@ a{
 a.header{
     font-weight:600;
     color:${props=>props.theme.primaryColors.sable};
+    transition:${props=>props.theme.animationSpeeds.fast};
+    &:hover{
+        color:${props=>props.theme.primaryColors.amber};
+    }
+}
+a.footer{
+    color:${props=>props.theme.primaryColors.frost};
     transition:${props=>props.theme.animationSpeeds.fast};
     &:hover{
         color:${props=>props.theme.primaryColors.amber};
@@ -72,17 +85,18 @@ a.header{
 }
 `
 const Container = styled.div`
-
+padding:75px 0 0 0;
 `
 
 const Layout = ({children}) => {
     return (
         <ThemeProvider theme={theme}>
            <ThemeWrapper>
-                <Container>
-                <Header></Header>
+           <Header></Header>
+                <Container>         
                     {children}
                 </Container>
+                <Footer></Footer>
             </ThemeWrapper>
         </ThemeProvider>
     )
