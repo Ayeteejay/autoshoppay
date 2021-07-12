@@ -70,6 +70,7 @@ const LogoCol = styled.div`
 
 const LinkCol = styled.div`
 display:flex;
+color:${props=>props.theme.primaryColors.frost};
 .product{
     ul{
         list-style:none;    
@@ -84,13 +85,20 @@ display:flex;
     }
 }
 .contact{
-
+    display:flex;
+    flex-flow:column;
+    justify-content:space-between;
+        p.title{
+            font-weight:600;
+            padding:0 0 0.5rem 0;
+            line-height:1.75
+        }
 }
 
 `
 
 const SocialCol = styled.div`
-
+display:flex;
 `
 
 const Footer = () => {
@@ -119,7 +127,10 @@ const Footer = () => {
         render={props=>(
             <FooterContainer>
                 <LinkRow>
-                    <LogoCol><img src={LightLogo} alt="AutoShopPay Logo" className="logo"/></LogoCol>    
+             
+                    <LogoCol>
+                    <Link to="/">
+                        <img src={LightLogo} alt="AutoShopPay Logo" className="logo"/></Link></LogoCol>    
                     <LinkCol>
                         <div className="product">
                         <ul>
@@ -131,8 +142,10 @@ const Footer = () => {
                             })}
                         </ul>
                         </div>
-                        <div className="contact">
+                        <div className="contact">                          
+                        <p className="title">Contact</p>
                             <p>2550 Meridian Blvd Ste 200<br></br>Franklin TN 37067</p>
+                            <p>(619)990-8133<br></br>hello@autoshoppay.com</p>
                         </div>
                     </LinkCol>
                 </LinkRow>   
@@ -140,6 +153,7 @@ const Footer = () => {
                 <LegalRow>
                     <p>Copyright &copy; AutoShopPay 2021. All rights reserved.</p>
                     <SocialCol>
+                        <p>Facebook</p>
                         <p>Twitter</p>
                     </SocialCol>
                 </LegalRow>
