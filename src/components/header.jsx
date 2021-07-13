@@ -191,21 +191,22 @@ const Header = ({data}) =>{
             <StaticQuery query={
                 graphql`
                 {
-                    allWpMenu {
-                        edges {
-                          node {
-                            id
-                            menuItems {
-                              nodes {
-                                id
-                                url
-                                label
-                              }
+                    allWpMenu(filter: {name: {eq: "Header Menu"}}) {
+                      edges {
+                        node {
+                          id
+                          menuItems {
+                            nodes {
+                              id
+                              url
+                              label
                             }
                           }
                         }
                       }
-                }    
+                    }
+                  }
+                  
                 `
             }
             render={props=>(              

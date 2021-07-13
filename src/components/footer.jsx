@@ -1,6 +1,8 @@
 import React from 'react';
 import styled, {keyframes} from 'styled-components';
 import {Link, graphql, StaticQuery} from 'gatsby';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faFacebookF, faTwitter} from '@fortawesome/free-brands-svg-icons';
 import LightLogo from '../images/autoshoppay-logo-light.svg';
 
 const shiftingGradient = keyframes`
@@ -38,24 +40,16 @@ padding: ${props=>props.theme.spacing.topBottom};
 const LinkRow = styled.div`
 width:100%;
 display:flex;
-justify-content:space-between;
-align-items:flex-start;
+flex-flow:column;
 padding:0 0 2rem 0;
-`
-
-const LegalRow = styled.div`
-border-top:1px solid ${props=>props.theme.primaryColors.frost};
-width:100%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:2rem 0;
-p{
-    color:${props=>props.theme.primaryColors.frost};
-    font-weight:200;
-    letter-spacing:0.5px;
+@media (min-width:${props=>props.theme.breakPoints.lg}){
+    justify-content:space-between;
+    align-items:flex-start;
+    flex-flow:row;
 }
 `
+
+
 
 const LogoCol = styled.div`
 .logo{
@@ -70,7 +64,9 @@ const LogoCol = styled.div`
 
 const LinkCol = styled.div`
 display:flex;
+flex-flow:column;
 color:${props=>props.theme.primaryColors.frost};
+padding:1rem 0;
 .product{
     ul{
         list-style:none;    
@@ -88,17 +84,60 @@ color:${props=>props.theme.primaryColors.frost};
     display:flex;
     flex-flow:column;
     justify-content:space-between;
+    padding:1.5rem 0 0 0;
+        p{
+            line-height:1.5;
+        }
         p.title{
             font-weight:600;
             padding:0 0 0.5rem 0;
-            line-height:1.75
+            line-height:1.75;
+        }
+        p.contact-info{
+            padding:1rem 0 0 0;
         }
 }
-
+@media (min-width:${props=>props.theme.breakPoints.lg}){
+    flex-flow:row;   
+    padding:0;
+    .contact{
+        padding:0 0 0 4rem;
+    }
+}
+`
+const LegalRow = styled.div`
+border-top:1px solid ${props=>props.theme.primaryColors.frost};
+width:100%;
+display:flex;
+flex-flow:column;
+justify-content:space-between;
+align-items:center;
+padding:2rem 0;
+p{
+    color:${props=>props.theme.primaryColors.frost};
+    font-weight:200;
+    letter-spacing:0.5px;
+}
+@media(min-width:${props=>props.theme.breakPoints.lg}){
+    flex-flow:row;
+}
 `
 
 const SocialCol = styled.div`
 display:flex;
+justify-content:flex-start;
+width:100%;
+padding:1rem 0 0 0;
+a{
+    padding:0 1.5rem 0 0;
+}
+@media(min-width:${props=>props.theme.breakPoints.lg}){
+    width:auto;
+    padding:0;
+    a{
+        padding:0 0 0 1.5rem;
+    }
+}
 `
 
 const Footer = () => {
@@ -107,35 +146,35 @@ const Footer = () => {
             <StaticQuery query={
                 graphql`
                 {
-                    allWpMenu {
-                        edges {
-                          node {
-                            id
-                            menuItems {
-                              nodes {
-                                id
-                                url
-                                label
-                              }
+                    allWpMenu(filter: {name: {eq: "Footer Menu"}}) {
+                      edges {
+                        node {
+                          id
+                          menuItems {
+                            nodes {
+                              id
+                              url
+                              label
                             }
                           }
                         }
                       }
-                } 
+                    }
+                  }                  
                 `
             }
         render={props=>(
             <FooterContainer>
-                <LinkRow>
-             
-                    <LogoCol>
-                    <Link to="/">
-                        <img src={LightLogo} alt="AutoShopPay Logo" className="logo"/></Link></LogoCol>    
-                    <LinkCol>
+                <LinkRow>             
+                        <LogoCol>
+                            <Link to="/">
+                            <img src={LightLogo} alt="AutoShopPay Logo" className="logo"/></Link>
+                        </LogoCol>    
+                <LinkCol>
                         <div className="product">
                         <ul>
                             <li>Product</li>
-                            {props.allWpMenu.edges[0].node.menuItems.nodes.map((value,index)=>{
+                            {props.allWpMenu.edges[0].node.menuItems.nodes.map((value)=>{
                                 return (
                                     <li key={value.id}><a href={value.url} className="footer">{value.label}</a></li>
                                 )
@@ -143,18 +182,17 @@ const Footer = () => {
                         </ul>
                         </div>
                         <div className="contact">                          
-                        <p className="title">Contact</p>
+                            <p className="title">Contact</p>
                             <p>2550 Meridian Blvd Ste 200<br></br>Franklin TN 37067</p>
-                            <p>(619)990-8133<br></br>hello@autoshoppay.com</p>
+                            <p className="contact-info">(619)990-8133<br></br><a href="mailto:hello@autoshoppay.com" className="footer">hello@autoshoppay.com</a></p>
                         </div>
                     </LinkCol>
                 </LinkRow>   
-
                 <LegalRow>
                     <p>Copyright &copy; AutoShopPay 2021. All rights reserved.</p>
                     <SocialCol>
-                        <p>Facebook</p>
-                        <p>Twitter</p>
+                        <a href="https://www.facebook.com/autoshoppay" target="_blank" className="footer" rel="noopener noreferrer"><FontAwesomeIcon icon={faFacebookF} size="lg" ></FontAwesomeIcon></a>
+                        <a href="https://twitter.com/autoshoppay" target="_blank" className="footer" rel="noopener noreferrer"><FontAwesomeIcon icon={faTwitter} size="lg" ></FontAwesomeIcon></a>
                     </SocialCol>
                 </LegalRow>
             </FooterContainer>   
