@@ -11,6 +11,7 @@ module.exports = {
       },
     },
     "gatsby-plugin-styled-components",
+    "gatsby-plugin-fontawesome-css",
     "gatsby-plugin-gatsby-cloud",
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
