@@ -111,7 +111,7 @@ width:100%;
 display:flex;
 flex-flow:column;
 justify-content:space-between;
-align-items:center;
+align-items:flex-start;
 padding:2rem 0;
 p{
     color:${props=>props.theme.primaryColors.frost};
@@ -191,8 +191,8 @@ const Footer = () => {
                 <LegalRow>
                     <p>Copyright &copy; AutoShopPay 2021. All rights reserved.</p>
                     <SocialCol>
-                        <a href="https://www.facebook.com/autoshoppay" target="_blank" className="footer" rel="noopener noreferrer"><FontAwesomeIcon icon={faFacebookF} size="lg" ></FontAwesomeIcon></a>
-                        <a href="https://twitter.com/autoshoppay" target="_blank" className="footer" rel="noopener noreferrer"><FontAwesomeIcon icon={faTwitter} size="lg" ></FontAwesomeIcon></a>
+                        <a href="https://www.facebook.com/autoshoppay" target="_blank" className="footer" rel="noopener noreferrer" aria-label="AutoShopPay Facebook"><FontAwesomeIcon icon={faFacebookF} size="lg" ></FontAwesomeIcon></a>
+                        <a href="https://twitter.com/autoshoppay" target="_blank" className="footer" rel="noopener noreferrer" aria-label="AutoShopPay Twitter"><FontAwesomeIcon icon={faTwitter} size="lg" ></FontAwesomeIcon></a>
                     </SocialCol>
                 </LegalRow>
             </FooterContainer>   

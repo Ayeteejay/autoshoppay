@@ -1,7 +1,7 @@
 import * as React from "react";
 import Layout from "../components/layout.jsx";
-import { Link, graphql, StaticQuery } from "gatsby";
-import { BackgroundColor } from "chalk";
+import { graphql, StaticQuery } from "gatsby";
+import OurProcess from "../components/process.jsx";
 
 const Index = () => {
   return (
@@ -50,6 +50,7 @@ const Index = () => {
                   .description
               }
             </p>
+            <OurProcess></OurProcess>
           </React.Fragment>
         )}
       />
