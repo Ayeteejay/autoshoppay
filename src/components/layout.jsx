@@ -44,11 +44,21 @@ const theme = {
 };
 
 const ThemeWrapper = styled.div`
-h2{
-    font-size:2.1875rem
+h2,h3{
+    font-size:2.1875rem;
+    line-height:1.1;
+    padding:0 0 1.5rem 0;
+}
+h5{
+    font-size:0.9375rem;
+    text-transform:uppercase;
+    font-weight:400;
 }
 a{
     text-decoration:none;
+}
+p{
+    line-height:1.5;
 }
 a.header{
     font-weight:600;

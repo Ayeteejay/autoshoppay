@@ -17,7 +17,7 @@ const Index = () => {
                   template {
                     ... on WpTemplate_Homepage {
                       templateName
-                      heroSection {
+                      homepage {
                         heroSection {
                           ctaBtn {
                             target
@@ -39,14 +39,11 @@ const Index = () => {
         render={(props) => (
           <React.Fragment>
             <h1 style={{ color: "blue" }}>
-              {
-                props.allWpPage.edges[0].node.template.heroSection.heroSection
-                  .h1
-              }
+              {props.allWpPage.edges[0].node.template.homepage.heroSection.h1}
             </h1>
             <p>
               {
-                props.allWpPage.edges[0].node.template.heroSection.heroSection
+                props.allWpPage.edges[0].node.template.homepage.heroSection
                   .description
               }
             </p>
