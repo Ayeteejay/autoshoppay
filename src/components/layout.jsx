@@ -60,6 +60,10 @@ a{
 p{
     line-height:1.5;
 }
+p.small-header{
+    font-size:1.4375rem;
+    font-weight:500;
+}
 a.header{
     font-weight:600;
     color:${props=>props.theme.primaryColors.sable};
@@ -93,6 +97,12 @@ a.footer{
         display:inline;
     }
 }
+.icon{
+    max-width:50px;
+    padding:0 0 15px 0;
+}
+
+
 `
 const Container = styled.div`
 padding:75px 0 0 0;

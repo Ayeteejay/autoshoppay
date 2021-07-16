@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {graphql, StaticQuery} from 'gatsby';
+import ProgramCard from './program-card';
 
 const ProcessWrapper = styled.div`
 display:flex;
@@ -8,13 +9,14 @@ justify-content:center;
 color:${props=>props.theme.primaryColors.frost};
 `
 const ProcessContainer = styled.div`
-width:90%;
+width:75%;
 padding:${props=>props.theme.spacing.topBottom};
 `
 
 const DescriptionRow = styled.div`
 display:grid;
 grid-template-columns:1fr;
+padding:${props=>props.theme.spacing.bottom};
 .description{
 }
 @media (min-width:${props=>props.theme.breakPoints.lg}){
@@ -24,7 +26,14 @@ grid-template-columns:1fr;
 
 const ProgramsRow = styled.div`
 display:grid;
-grid-template-columns:repeat(4, 1fr);
+grid-template-columns:repeat(1fr);
+grid-gap:2rem;
+@media(min-width:${props=>props.theme.breakPoints.md}){
+  grid-template-columns:repeat(2,1fr);
+}
+@media(min-width:${props=>props.theme.breakPoints.lg}){
+  grid-template-columns:repeat(4,1fr);
+}
 `
 
 const Process = () =>{
@@ -110,8 +119,11 @@ const Process = () =>{
                             <p>{props.allWpPage.edges[0].node.template.homepage.ourProcess.description}</p>  
                           </div>
                         </DescriptionRow>
-                        <ProgramsRow>
-                            <h4>Program stuff will go here</h4>
+                        <ProgramsRow>                                  
+                            <ProgramCard icon={props.allWpPage.edges[0].node.template.homepage.ourProcess.featureBlockOne.icon.sourceUrl} smallHeader={props.allWpPage.edges[0].node.template.homepage.ourProcess.featureBlockOne.title} description={props.allWpPage.edges[0].node.template.homepage.ourProcess.featureBlockOne.description}></ProgramCard>
+                            <ProgramCard icon={props.allWpPage.edges[0].node.template.homepage.ourProcess.featureBlockTwo.icon.sourceUrl} smallHeader={props.allWpPage.edges[0].node.template.homepage.ourProcess.featureBlockTwo.title} description={props.allWpPage.edges[0].node.template.homepage.ourProcess.featureBlockTwo.description}></ProgramCard>
+                            <ProgramCard icon={props.allWpPage.edges[0].node.template.homepage.ourProcess.featureBlockThree.icon.sourceUrl} smallHeader={props.allWpPage.edges[0].node.template.homepage.ourProcess.featureBlockThree.title} description={props.allWpPage.edges[0].node.template.homepage.ourProcess.featureBlockThree.description}></ProgramCard>
+                            <ProgramCard icon={props.allWpPage.edges[0].node.template.homepage.ourProcess.featureBlockFour.icon.sourceUrl} smallHeader={props.allWpPage.edges[0].node.template.homepage.ourProcess.featureBlockFour.title} description={props.allWpPage.edges[0].node.template.homepage.ourProcess.featureBlockFour.description}></ProgramCard>
                         </ProgramsRow>
                     </ProcessContainer>
                   </ProcessWrapper>  

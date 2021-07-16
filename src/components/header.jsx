@@ -12,6 +12,7 @@ align-items:center;
 position:fixed;
 width:100%;
 background:${props=>props.theme.primaryColors.frost};
+z-index:999;
 `
 
 const Desktop = styled.div`

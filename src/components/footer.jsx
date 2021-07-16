@@ -29,7 +29,7 @@ width:100%;
 `;
 
 const FooterContainer = styled.div`
-width:90%;
+width:75%;
 display:flex;
 flex-flow:column;
 justify-content:space-between;

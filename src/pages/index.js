@@ -2,6 +2,7 @@ import * as React from "react";
 import Layout from "../components/layout.jsx";
 import { graphql, StaticQuery } from "gatsby";
 import OurProcess from "../components/process.jsx";
+import OurRates from "../components/rates.jsx";
 
 const Index = () => {
   return (
@@ -38,7 +39,7 @@ const Index = () => {
         `}
         render={(props) => (
           <React.Fragment>
-            <h1 style={{ color: "blue" }}>
+            {/* <h1 style={{ color: "blue" }}>
               {props.allWpPage.edges[0].node.template.homepage.heroSection.h1}
             </h1>
             <p>
@@ -46,8 +47,9 @@ const Index = () => {
                 props.allWpPage.edges[0].node.template.homepage.heroSection
                   .description
               }
-            </p>
+            </p> */}
             <OurProcess></OurProcess>
+            <OurRates></OurRates>
           </React.Fragment>
         )}
       />
