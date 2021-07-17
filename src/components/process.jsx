@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {graphql, StaticQuery} from 'gatsby';
-import ProgramCard from './program-card';
+import ProgramCard from './program-card.jsx';
 
 const ProcessWrapper = styled.div`
 display:flex;
@@ -49,7 +49,7 @@ const Process = () =>{
                         template {
                           ... on WpTemplate_Homepage {
                             templateName
-                            homepage {
+                            process {
                               ourProcess {
                                 description
                                 fieldGroupName
@@ -110,20 +110,20 @@ const Process = () =>{
                               
                 `}
                 render={props=>(
-                  <ProcessWrapper style={{backgroundImage:`url(${props.allWpPage.edges[0].node.template.homepage.ourProcess.backgroundImage.sourceUrl})`,backgroundPosition:props.allWpPage.edges[0].node.template.homepage.ourProcess.backgroundPosition, backgroundRepeat:props.allWpPage.edges[0].node.template.homepage.ourProcess.backgroundRepeat,backgroundColor:props.allWpPage.edges[0].node.template.homepage.ourProcess.backgroundColor,backgroundSize:props.allWpPage.edges[0].node.template.homepage.ourProcess.backgroundSize}}>
+                  <ProcessWrapper style={{backgroundImage:`url(${props.allWpPage.edges[0].node.template.process.ourProcess.backgroundImage.sourceUrl})`,backgroundPosition:props.allWpPage.edges[0].node.template.process.ourProcess.backgroundPosition, backgroundRepeat:props.allWpPage.edges[0].node.template.process.ourProcess.backgroundRepeat,backgroundColor:props.allWpPage.edges[0].node.template.process.ourProcess.backgroundColor,backgroundSize:props.allWpPage.edges[0].node.template.process.ourProcess.backgroundSize}}>
                     <ProcessContainer >
                         <DescriptionRow>
                           <div className="description">
-                            <h5>{props.allWpPage.edges[0].node.template.homepage.ourProcess.subHeader}</h5>
-                            <h3>{props.allWpPage.edges[0].node.template.homepage.ourProcess.header}</h3>
-                            <p>{props.allWpPage.edges[0].node.template.homepage.ourProcess.description}</p>  
+                            <h5>{props.allWpPage.edges[0].node.template.process.ourProcess.subHeader}</h5>
+                            <h3>{props.allWpPage.edges[0].node.template.process.ourProcess.header}</h3>
+                            <p>{props.allWpPage.edges[0].node.template.process.ourProcess.description}</p>  
                           </div>
                         </DescriptionRow>
                         <ProgramsRow>                                  
-                            <ProgramCard icon={props.allWpPage.edges[0].node.template.homepage.ourProcess.featureBlockOne.icon.sourceUrl} smallHeader={props.allWpPage.edges[0].node.template.homepage.ourProcess.featureBlockOne.title} description={props.allWpPage.edges[0].node.template.homepage.ourProcess.featureBlockOne.description}></ProgramCard>
-                            <ProgramCard icon={props.allWpPage.edges[0].node.template.homepage.ourProcess.featureBlockTwo.icon.sourceUrl} smallHeader={props.allWpPage.edges[0].node.template.homepage.ourProcess.featureBlockTwo.title} description={props.allWpPage.edges[0].node.template.homepage.ourProcess.featureBlockTwo.description}></ProgramCard>
-                            <ProgramCard icon={props.allWpPage.edges[0].node.template.homepage.ourProcess.featureBlockThree.icon.sourceUrl} smallHeader={props.allWpPage.edges[0].node.template.homepage.ourProcess.featureBlockThree.title} description={props.allWpPage.edges[0].node.template.homepage.ourProcess.featureBlockThree.description}></ProgramCard>
-                            <ProgramCard icon={props.allWpPage.edges[0].node.template.homepage.ourProcess.featureBlockFour.icon.sourceUrl} smallHeader={props.allWpPage.edges[0].node.template.homepage.ourProcess.featureBlockFour.title} description={props.allWpPage.edges[0].node.template.homepage.ourProcess.featureBlockFour.description}></ProgramCard>
+                            <ProgramCard icon={props.allWpPage.edges[0].node.template.process.ourProcess.featureBlockOne.icon.sourceUrl} smallHeader={props.allWpPage.edges[0].node.template.process.ourProcess.featureBlockOne.title} description={props.allWpPage.edges[0].node.template.process.ourProcess.featureBlockOne.description}></ProgramCard>
+                            <ProgramCard icon={props.allWpPage.edges[0].node.template.process.ourProcess.featureBlockTwo.icon.sourceUrl} smallHeader={props.allWpPage.edges[0].node.template.process.ourProcess.featureBlockTwo.title} description={props.allWpPage.edges[0].node.template.process.ourProcess.featureBlockTwo.description}></ProgramCard>
+                            <ProgramCard icon={props.allWpPage.edges[0].node.template.process.ourProcess.featureBlockThree.icon.sourceUrl} smallHeader={props.allWpPage.edges[0].node.template.process.ourProcess.featureBlockThree.title} description={props.allWpPage.edges[0].node.template.process.ourProcess.featureBlockThree.description}></ProgramCard>
+                            <ProgramCard icon={props.allWpPage.edges[0].node.template.process.ourProcess.featureBlockFour.icon.sourceUrl} smallHeader={props.allWpPage.edges[0].node.template.process.ourProcess.featureBlockFour.title} description={props.allWpPage.edges[0].node.template.process.ourProcess.featureBlockFour.description}></ProgramCard>
                         </ProgramsRow>
                     </ProcessContainer>
                   </ProcessWrapper>  

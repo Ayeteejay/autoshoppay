@@ -49,10 +49,14 @@ h2,h3{
     line-height:1.1;
     padding:0 0 1.5rem 0;
 }
+h3.blue{
+    color:${props=>props.theme.primaryColors.aspBlue};
+}
 h5{
     font-size:0.9375rem;
     text-transform:uppercase;
-    font-weight:400;
+    font-weight:600;
+    padding:0 0 0.5rem 0;
 }
 a{
     text-decoration:none;
@@ -63,6 +67,15 @@ p{
 p.small-header{
     font-size:1.4375rem;
     font-weight:500;
+}
+p.medium-header{
+    font-size:1.4375rem;
+    font-weight:700;
+}
+p.large-header{
+    font-size:2.1875rem;
+    line-height:1.1;
+    padding:0 0 1.5rem 0;
 }
 a.header{
     font-weight:600;
