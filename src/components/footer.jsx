@@ -141,6 +141,9 @@ a{
 `
 
 const Footer = () => {
+
+    const copyrightYear = () => (new Date()).getFullYear();
+    
     return (
         <FooterWrapper>
             <StaticQuery query={
@@ -189,7 +192,7 @@ const Footer = () => {
                     </LinkCol>
                 </LinkRow>   
                 <LegalRow>
-                    <p>Copyright &copy; AutoShopPay 2021. All rights reserved.</p>
+                    <p>Copyright &copy; AutoShopPay {copyrightYear()}. All rights reserved.</p>
                     <SocialCol>
                         <a href="https://www.facebook.com/autoshoppay" target="_blank" className="footer" rel="noopener noreferrer" aria-label="AutoShopPay Facebook"><FontAwesomeIcon icon={faFacebookF} size="lg" ></FontAwesomeIcon></a>
                         <a href="https://twitter.com/autoshoppay" target="_blank" className="footer" rel="noopener noreferrer" aria-label="AutoShopPay Twitter"><FontAwesomeIcon icon={faTwitter} size="lg" ></FontAwesomeIcon></a>

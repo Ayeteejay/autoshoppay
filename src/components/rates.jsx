@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { graphql, StaticQuery } from 'gatsby';
 import RateCard from './rate-card.jsx';
+import RateSlider from './ratesSlider.jsx';
 
 const RatesWrapper = styled.div`
 display:flex;
@@ -14,6 +15,7 @@ padding:${props=>props.theme.spacing.topBottom};
 position:relative;
 display:flex;
 justify-content:center;
+flex-flow:column;
 `
 
 const DescriptionRow = styled.div`
@@ -25,16 +27,26 @@ padding:0 0 3rem 0;
 `
 
 const RatesRow = styled.div`
-display:grid;
-grid-template-columns:1fr;
-grid-gap:2rem;
-position:absolute;
+// display:grid;
+// grid-template-columns:1fr;
+// grid-gap:2rem;
+// position:absolute;
+display:none;
 top:75%;
 @media(min-width:${props=>props.theme.breakPoints.md}){
+  display:grid;
+  grid-gap:2rem;
+position:absolute;
   grid-template-columns:repeat(2,1fr);
 }
 @media(min-width:${props=>props.theme.breakPoints.lg}){
   grid-template-columns:repeat(3, 1fr);
+}
+`
+
+const RatesRowMobile = styled.div`
+@media (min-width:${props=>props.theme.breakPoints.md}){
+  display:none;
 }
 `
 
@@ -69,15 +81,15 @@ const Rates = () =>{
                                   title
                                   backgroundColor
                                   borderColor
-                                }
-                                rateBlockThree {
+                                }                            
+                                rateBlockTwo {
                                   description
                                   rate
                                   title
                                   backgroundColor
                                   borderColor
                                 }
-                                rateBlockTwo {
+                                rateBlockThree {
                                   description
                                   rate
                                   title
@@ -105,11 +117,14 @@ const Rates = () =>{
                               {props.allWpPage.edges[0].node.template.rates.ourRates.description}
                               </p>
                           </DescriptionRow>
-                          <RatesRow>
-                            <RateCard data={props.allWpPage.edges[0].node.template.rates.ourRates.rateBlockOne}></RateCard>
-                            <RateCard data={props.allWpPage.edges[0].node.template.rates.ourRates.rateBlockTwo}></RateCard>
-                            <RateCard data={props.allWpPage.edges[0].node.template.rates.ourRates.rateBlockThree}></RateCard>
+                            <RatesRow>
+                              <RateCard data={props.allWpPage.edges[0].node.template.rates.ourRates.rateBlockOne}></RateCard>
+                              <RateCard data={props.allWpPage.edges[0].node.template.rates.ourRates.rateBlockTwo}></RateCard>
+                              <RateCard data={props.allWpPage.edges[0].node.template.rates.ourRates.rateBlockThree}></RateCard>
                           </RatesRow>
+                            <RatesRowMobile>
+                                <RateSlider data={props.allWpPage.edges[0].node.template.rates.ourRates}></RateSlider>
+                            </RatesRowMobile>
                       </RatesContainer>                      
                     </RatesWrapper>
                 )}
