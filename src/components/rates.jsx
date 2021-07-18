@@ -16,6 +16,9 @@ position:relative;
 display:flex;
 justify-content:center;
 flex-flow:column;
+@media(min-width:${props=>props.theme.breakPoints.lg}){
+  align-items:center;
+}
 `
 
 const DescriptionRow = styled.div`

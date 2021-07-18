@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import {graphql, StaticQuery} from 'gatsby';
+import DeviceCard from './device-card.jsx';
 
 const TechnologyWrapper = styled.div`
 display:flex;
 justify-content:center;
+align-items:center;
 padding:${props=>props.theme.spacing.topBottom};
 @media(min-width:${props=>props.theme.breakPoints.md}){
     padding:22rem 0 5rem 0;
@@ -18,6 +20,33 @@ const TechnologyContainer = styled.div`
 width:75%;
 `
 
+const TechnologyRow = styled.div`
+display:grid;
+grid-template-columns:1fr;
+grid-gap:2rem;
+.technology-bullets{
+  padding:1.5rem 0 0 0;
+  margin:1.5rem 0 0 0;
+  border-top:1px solid ${props=>props.theme.secondaryColors.lightGray};
+}
+.technology-description{
+
+}
+.technology-image{
+
+}
+@media (min-width:${props=>props.theme.breakPoints.lg}){
+  grid-template-columns:repeat(2,1fr);
+grid-gap:5rem;
+}
+`
+
+const DeviceRow = styled.div`
+display:grid;
+grid-template-columns:repeat(3,1fr);
+grid-gap:2rem;
+padding:${props=>props.theme.spacing.top};
+`
 
 const Technology = () =>{
     return (
@@ -25,49 +54,52 @@ const Technology = () =>{
             <StaticQuery
                 query={graphql`
                 {
-                    allWpPage(filter: {template: {templateName: {eq: "Homepage"}}}) {
-                      edges {
-                        node {
-                          id
-                          template {
-                            ... on WpTemplate_Homepage {
-                              templateName
-                              technology {
-                                ourTechnology {
-                                  backgroundColor
-                                  backgroundPosition
-                                  backgroundRepeat
+                  allWpPage(filter: {template: {templateName: {eq: "Homepage"}}}) {
+                    edges {
+                      node {
+                        id
+                        template {
+                          ... on WpTemplate_Homepage {
+                            templateName
+                            technology {
+                              ourTechnology {
+                                backgroundColor
+                                backgroundPosition
+                                backgroundRepeat
+                                bullets
+                                description
+                                image {
+                                  altText
+                                  sourceUrl
+                                }
+                                backgroundImage {
+                                  altText
+                                  sourceUrl
+                                }
+                                header
+                                subHeader
+                                deviceBlockOne {
                                   bullets
-                                  description
-                                  backgroundImage {
+                                  title
+                                  device {
                                     altText
                                     sourceUrl
                                   }
-                                  header
-                                  subHeader
-                                  deviceBlockOne {
-                                    bullets
-                                    title
-                                    device {
-                                      altText
-                                      sourceUrl
-                                    }
+                                }
+                                deviceBlockTwo {
+                                  bullets
+                                  title
+                                  device {
+                                    altText
+                                    sourceUrl
                                   }
-                                  deviceBlockTwo {
-                                    bullets
-                                    title
-                                    device {
-                                      altText
-                                      sourceUrl
-                                    }
-                                  }
-                                  deviceBlockThree {
-                                    bullets
-                                    title
-                                    device {
-                                      altText
-                                      sourceUrl
-                                    }
+                                }
+                                deviceBlockThree {
+                                  bullets
+                                  title
+                                  device {
+                                    altText
+                                    sourceUrl
                                   }
                                 }
                               }
@@ -76,17 +108,32 @@ const Technology = () =>{
                         }
                       }
                     }
-                  }                  
+                  }
+                }                
                     `
                 }
                 render={props=>(
                     <TechnologyWrapper>
-                        <TechnologyContainer>
-                            <h5>{props.allWpPage.edges[0].node.template.technology.ourTechnology.subHeader}</h5>
-                            <h3 className="blue">{props.allWpPage.edges[0].node.template.technology.ourTechnology.header}</h3>
-                            <p>{props.allWpPage.edges[0].node.template.technology.ourTechnology.description}</p>
-
-                           {props.allWpPage.edges[0].node.template.technology.ourTechnology.bullets}
+                        <TechnologyContainer>   
+                            <TechnologyRow>
+                                <div className="technology-description">
+                                    <h5>{props.allWpPage.edges[0].node.template.technology.ourTechnology.subHeader}</h5>
+                                    <h3 className="blue">{props.allWpPage.edges[0].node.template.technology.ourTechnology.header}</h3>
+                                    <p>{props.allWpPage.edges[0].node.template.technology.ourTechnology.description}</p>
+                                    <div className="technology-bullets" dangerouslySetInnerHTML={{__html:`${props.allWpPage.edges[0].node.template.technology.ourTechnology.bullets}`}}>
+                                    </div> 
+                                </div>      
+                                <div className="technology-image">
+                                  <img className="fluid-img" src={props.allWpPage.edges[0].node.template.technology.ourTechnology.image.sourceUrl} alt={props.allWpPage.edges[0].node.template.technology.ourTechnology.image.altText}/> 
+                                </div>                   
+                            </TechnologyRow>  
+                            <DeviceRow>
+                            {(Object.values(props.allWpPage.edges[0].node.template.technology.ourTechnology)).slice(Object.keys(props.allWpPage.edges[0].node.template.technology.ourTechnology).length-3).map((value,index)=>{
+                              return (
+                                <DeviceCard key={index} data={value}></DeviceCard>
+                              )
+                            })}
+                            </DeviceRow>                                               
                         </TechnologyContainer>
                     </TechnologyWrapper>
                 )}

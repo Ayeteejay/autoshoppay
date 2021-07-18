@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, {ThemeProvider} from 'styled-components';
 import "../styles/global.css"
+import Bullet from '../images/autoshoppay-bullet.svg';
 
 import Header from './header.jsx';
 import Footer from './footer.jsx';
@@ -20,6 +21,7 @@ const theme = {
         lightMintGreen: "#EBFFF9",
         darkAmber: "#F24C17",
         darkMintGreen: "#00A374",
+        lightGray:"#C7C7C7",
     },
     breakPoints:{
         xs: "450px",
@@ -48,9 +50,6 @@ h2,h3{
     font-size:2.1875rem;
     line-height:1.1;
     padding:0 0 1.5rem 0;
-}
-h3.blue{
-    color:${props=>props.theme.primaryColors.aspBlue};
 }
 h5{
     font-size:0.9375rem;
@@ -110,11 +109,23 @@ a.footer{
         display:inline;
     }
 }
+ul.orange-bullet{
+    list-style-image: url(${Bullet});
+    margin:0 0 0 1.5rem;
+    li{
+        line-height:1.6;
+    }
+}
 .icon{
     max-width:50px;
     padding:0 0 15px 0;
 }
-
+.blue{
+    color:${props=>props.theme.primaryColors.aspBlue};
+}
+.fluid-img{
+max-width:100%;
+}
 
 `
 const Container = styled.div`
