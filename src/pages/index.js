@@ -1,10 +1,12 @@
 import * as React from "react";
 import Layout from "../components/layout.jsx";
 import { graphql, StaticQuery } from "gatsby";
-import OurProcess from "../components/process.jsx";
-import OurRates from "../components/rates.jsx";
-import OurTechnology from "../components/technology.jsx";
-import TechnologyOptions from "../components/options.jsx";
+import OurProcess from "../components/process-section.jsx";
+import OurRates from "../components/rates-section.jsx";
+import OurTechnology from "../components/technology-section.jsx";
+import TechnologyOptions from "../components/options-section.jsx";
+import OurMission from "../components/mission-section.jsx";
+import OurTestimonials from "../components/testimonial-section.jsx";
 
 const Index = () => {
   return (
@@ -54,6 +56,8 @@ const Index = () => {
             <OurRates></OurRates>
             <OurTechnology></OurTechnology>
             <TechnologyOptions></TechnologyOptions>
+            <OurMission></OurMission>
+            <OurTestimonials></OurTestimonials>
           </React.Fragment>
         )}
       />

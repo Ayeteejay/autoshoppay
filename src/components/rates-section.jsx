@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { graphql, StaticQuery } from 'gatsby';
 import RateCard from './rate-card.jsx';
-import RateSlider from './ratesSlider.jsx';
+import RateSlider from './rates-slider.jsx';
 
 const RatesWrapper = styled.div`
 display:flex;
@@ -24,9 +24,12 @@ flex-flow:column;
 const DescriptionRow = styled.div`
 display:flex;
 flex-flow:column;
-align-items:center;
-text-align:center;
+justify-content:flex-start;
 padding:0 0 3rem 0;
+@media(min-width:${props=>props.theme.breakPoints.lg}){
+  text-align:center;
+justify-content:center; 
+}
 `
 
 const RatesRow = styled.div`

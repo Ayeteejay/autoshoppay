@@ -56,7 +56,7 @@ grid-gap:2rem;
 `
 
 const DeviceRowMobile = styled.div`
-padding:${props=>props.theme.spacing.top};
+padding:3rem 0 0 0;
 @media (min-width:${props=>props.theme.breakPoints.md}){
   display:none;
 }

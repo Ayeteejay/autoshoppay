@@ -22,6 +22,7 @@ const theme = {
         darkAmber: "#F24C17",
         darkMintGreen: "#00A374",
         lightGray:"#C7C7C7",
+        offGray:"#F2F2F2",
     },
     breakPoints:{
         xs: "450px",
@@ -40,6 +41,7 @@ const theme = {
     },
     spacing:{
         topBottom: "5rem 0",
+        lgTopBottom: "10rem 0",
         bottom: "0 0 5rem 0",
         top: "5rem 0 0 0",
     }
@@ -48,7 +50,7 @@ const theme = {
 const ThemeWrapper = styled.div`
 h2,h3{
     font-size:2.1875rem;
-    line-height:1.1;
+    line-height:1.3;
     padding:0 0 1.5rem 0;
 }
 h5{
@@ -122,6 +124,12 @@ ul.orange-bullet{
 }
 .blue{
     color:${props=>props.theme.primaryColors.aspBlue};
+}
+.green{
+    color:${props=>props.theme.primaryColors.mintGreen};
+}
+.white{
+    color:${props=>props.theme.primaryColors.frost};
 }
 .fluid-img{
 max-width:100%;

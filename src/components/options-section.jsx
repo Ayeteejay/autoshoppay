@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import {graphql, StaticQuery} from 'gatsby';
-import TechnologyCard from './technology-card';
+import TechnologyCard from './technology-card.jsx';
+import TechnologySlider from './technology-slider.jsx';
 
 const OptionsWrapper = styled.div`
 display:flex;
@@ -11,7 +12,6 @@ justify-content:center;
 const OptionsContainer = styled.div`
 width:75%;
 padding:${props=>props.theme.spacing.topBottom};
-position:relative;
 display:flex;
 justify-content:center;
 flex-flow:column
@@ -20,9 +20,12 @@ flex-flow:column
 const DescriptionRow = styled.div`
 display:flex;
 flex-flow:column;
-align-items:center;
-text-align:center;
+justify-content:flex-start;
 padding:0 0 3rem 0;
+@media(min-width:${props=>props.theme.breakPoints.lg}){
+  text-align:center;
+  justify-content:center;
+}
 `
 
 const TechnologyRow = styled.div`
@@ -34,6 +37,13 @@ display:none;
 }
 @media(min-width:${props=>props.theme.breakPoints.lg}){
   grid-template-columns:repeat(4, 1fr);
+}
+`
+
+const TechnologyRowMobile = styled.div`
+padding:${props=>props.theme.spacing.bottom};
+@media (min-width:${props=>props.theme.breakPoints.md}){
+  display:none;
 }
 `
 
@@ -113,6 +123,9 @@ const Options = () => {
                         )
                     })}
                 </TechnologyRow>
+                <TechnologyRowMobile>
+                    <TechnologySlider data={props.allWpPage.edges[0].node.template.options.technologyOptions}></TechnologySlider>
+                </TechnologyRowMobile>
             </OptionsContainer>
         </OptionsWrapper>
         )}
