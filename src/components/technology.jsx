@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {graphql, StaticQuery} from 'gatsby';
 import DeviceCard from './device-card.jsx';
+import DeviceSlider from './device-slider.jsx';
 
 const TechnologyWrapper = styled.div`
 display:flex;
@@ -42,10 +43,23 @@ grid-gap:5rem;
 `
 
 const DeviceRow = styled.div`
-display:grid;
-grid-template-columns:repeat(3,1fr);
-grid-gap:2rem;
+display:none;
 padding:${props=>props.theme.spacing.top};
+@media(min-width:${props=>props.theme.breakPoints.md}){
+  display:grid;
+grid-gap:2rem;
+  grid-template-columns:repeat(2,1fr);
+}
+@media(min-width:${props=>props.theme.breakPoints.lg}){
+  grid-template-columns:repeat(3,1fr);
+}
+`
+
+const DeviceRowMobile = styled.div`
+padding:${props=>props.theme.spacing.top};
+@media (min-width:${props=>props.theme.breakPoints.md}){
+  display:none;
+}
 `
 
 const Technology = () =>{
@@ -133,7 +147,10 @@ const Technology = () =>{
                                 <DeviceCard key={index} data={value}></DeviceCard>
                               )
                             })}
-                            </DeviceRow>                                               
+                            </DeviceRow>              
+                            <DeviceRowMobile>
+                              <DeviceSlider data={props.allWpPage.edges[0].node.template.technology.ourTechnology}></DeviceSlider>
+                            </DeviceRowMobile>                                 
                         </TechnologyContainer>
                     </TechnologyWrapper>
                 )}

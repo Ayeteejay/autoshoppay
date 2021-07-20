@@ -30,10 +30,6 @@ padding:0 0 3rem 0;
 `
 
 const RatesRow = styled.div`
-// display:grid;
-// grid-template-columns:1fr;
-// grid-gap:2rem;
-// position:absolute;
 display:none;
 top:75%;
 @media(min-width:${props=>props.theme.breakPoints.md}){

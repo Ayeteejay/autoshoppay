@@ -4,6 +4,7 @@ import { graphql, StaticQuery } from "gatsby";
 import OurProcess from "../components/process.jsx";
 import OurRates from "../components/rates.jsx";
 import OurTechnology from "../components/technology.jsx";
+import TechnologyOptions from "../components/options.jsx";
 
 const Index = () => {
   return (
@@ -52,6 +53,7 @@ const Index = () => {
             <OurProcess></OurProcess>
             <OurRates></OurRates>
             <OurTechnology></OurTechnology>
+            <TechnologyOptions></TechnologyOptions>
           </React.Fragment>
         )}
       />
