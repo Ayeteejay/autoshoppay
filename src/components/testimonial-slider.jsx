@@ -43,11 +43,11 @@ const TestimonialSlider = (props) =>{
       )
     }
     const testimonialArr = (Object.values(props.data)).slice(Object.keys(props.data).length-(props.quantityOfQuotes));
-    const locationImageArr = testimonialArr.filter((value)=>{
-        if(value.quoteImage !== null){
-            return value;
-        }
-    });
+    // const locationImageArr = testimonialArr.filter((value)=>{
+    //     if(value.quoteImage !== null){
+    //         return value;
+    //     }
+    // });
     return (
         <SliderContainer>
             <Slider {...settings}>
