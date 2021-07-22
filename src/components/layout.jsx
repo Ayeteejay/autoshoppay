@@ -50,6 +50,10 @@ const theme = {
 };
 
 const ThemeWrapper = styled.div`
+h1{
+    font-size:3.125rem;
+    padding:0 0 1.5rem 0;
+}
 h2,h3{
     font-size:2.1875rem;
     line-height:1.3;
@@ -79,6 +83,12 @@ p.large-header{
     font-size:2.1875rem;
     line-height:1.1;
     padding:0 0 1.5rem 0;
+}
+p.thick-header{
+    font-size:2.1875rem;
+    line-height:1.1;
+    padding:0 0 1.5rem 0;
+    font-weight:600
 }
 a.header{
     font-weight:600;
@@ -132,6 +142,9 @@ ul.orange-bullet{
 }
 .white{
     color:${props=>props.theme.primaryColors.frost};
+}
+.uppercase{
+    text-transform:uppercase
 }
 .fluid-img{
 max-width:100%;

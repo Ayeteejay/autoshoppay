@@ -28,6 +28,7 @@ const RatesSlider = (props) =>{
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows:false,
+        
     customPaging: page => (
         <div
           style={{
