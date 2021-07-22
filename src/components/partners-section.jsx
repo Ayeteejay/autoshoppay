@@ -22,7 +22,6 @@ justify-content:center;
 
 const PartnersRow = styled.div`
 width:100%;
-
 `
 
 
