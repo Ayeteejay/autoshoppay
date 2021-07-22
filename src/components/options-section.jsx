@@ -41,9 +41,9 @@ display:none;
 `
 
 const TechnologyRowMobile = styled.div`
-padding:${props=>props.theme.spacing.bottom};
 @media (min-width:${props=>props.theme.breakPoints.md}){
   display:none;
+  padding:${props=>props.theme.spacing.bottom};
 }
 `
 

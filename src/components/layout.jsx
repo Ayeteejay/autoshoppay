@@ -1,6 +1,8 @@
 import React from 'react';
 import styled, {ThemeProvider} from 'styled-components';
-import "../styles/global.css"
+import "../styles/global.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import Bullet from '../images/autoshoppay-bullet.svg';
 
 import Header from './header.jsx';
