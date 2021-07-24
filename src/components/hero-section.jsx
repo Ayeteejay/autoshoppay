@@ -114,8 +114,8 @@ const Hero = (props) =>{
             <HeroContainer>
                 <HeaderColumn>
                     <h1 className="white">{props.allWpPage.edges[0].node.template.hero.heroSection.header}</h1>
-                    <p className="white">{props.allWpPage.edges[0].node.template.hero.heroSection.description}</p>
-                    <a href={props.allWpPage.edges[0].node.template.hero.heroSection.button.url} className="amber-cta">{props.allWpPage.edges[0].node.template.hero.heroSection.button.title}</a>
+                    <p className="white">{props.allWpPage.edges[0].node.template.hero.heroSection.description}</p>                    
+                    <a href={props.allWpPage.edges[0].node.template.hero.heroSection.button.url} className="frost-cta">{props.allWpPage.edges[0].node.template.hero.heroSection.button.title}</a>         
                 </HeaderColumn>
                 <FeaturedColumn>
                     <FeaturedSlider data={props.allWpPage.edges[0].node.template.hero.heroSection} quantityOfFeatured={props.allWpPage.edges[0].node.template.hero.heroSection.numberOfFeatureBlocks}></FeaturedSlider>

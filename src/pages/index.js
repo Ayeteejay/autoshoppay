@@ -8,6 +8,7 @@ import TechnologyOptions from "../components/options-section.jsx";
 import OurMission from "../components/mission-section.jsx";
 import OurTestimonials from "../components/testimonial-section.jsx";
 import Partners from "../components/partners-section.jsx";
+import ContactUs from "../components/contact-section.jsx";
 
 const Index = () => {
   return (
@@ -20,6 +21,7 @@ const Index = () => {
       <OurMission></OurMission>
       <OurTestimonials></OurTestimonials>
       <Partners></Partners>
+      <ContactUs></ContactUs>
     </Layout>
   );
 };

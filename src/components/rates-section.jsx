@@ -110,7 +110,7 @@ const Rates = () =>{
                   
                 `}
                 render={props=>(
-                    <RatesWrapper style={{background:props.allWpPage.edges[0].node.template.rates.ourRates.backgroundColor}}>
+                    <RatesWrapper id="pricing" style={{background:props.allWpPage.edges[0].node.template.rates.ourRates.backgroundColor}}>
                       <RatesContainer >
                           <DescriptionRow>
                               <h5>{props.allWpPage.edges[0].node.template.rates.ourRates.subHeader}</h5>

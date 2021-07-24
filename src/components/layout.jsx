@@ -123,6 +123,41 @@ a.footer{
         display:inline;
     }
 }
+.frost-cta{
+    font-weight:600;
+    border:1px solid ${props=>props.theme.primaryColors.frost};
+    color:${props=>props.theme.primaryColors.frost};
+    transition:${props=>props.theme.animationSpeeds.fast};
+    padding:1rem 0;
+    display:block;
+    text-align:center;
+    max-width:35%;
+    margin:1rem 0 0 0;
+    &:hover{
+        color:${props=>props.theme.primaryColors.frost};
+        background:${props=>props.theme.primaryColors.amber};
+        border:1px solid ${props=>props.theme.primaryColors.amber};
+    }
+    @media(min-width:${props=>props.theme.breakPoints.lg}){
+        padding:1rem 1.5rem;
+    }
+}
+.blue-cta{
+    font-weight:600;
+    border:1px solid ${props=>props.theme.primaryColors.aspBlue};
+    background:${props=>props.theme.primaryColors.aspBlue};
+    color:${props=>props.theme.primaryColors.frost};
+    transition:${props=>props.theme.animationSpeeds.fast};
+    padding:1rem 0;
+    text-align:center;
+    &:hover{
+        background:none;
+        color:${props=>props.theme.primaryColors.aspBlue};
+    }
+    @media(min-width:${props=>props.theme.breakPoints.lg}){
+        padding:1rem 1.5rem;
+    }
+}
 ul.orange-bullet{
     list-style-image: url(${Bullet});
     margin:0 0 0 1.5rem;
@@ -149,7 +184,10 @@ ul.orange-bullet{
 .fluid-img{
 max-width:100%;
 }
-
+button{
+    font-size:1rem;
+    cursor:pointer;
+}
 `
 const Container = styled.div`
 padding:75px 0 0 0;

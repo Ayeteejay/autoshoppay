@@ -33,7 +33,7 @@ const FeaturedCard = (props) => {
     return (
         <CardWrapper>
             <CompanyRow>
-                <img src={props.data.companyLogo === null ? "" : props.data.companyLogo.sourceUrl}/>
+                <img src={props.data.companyLogo === null ? "" : props.data.companyLogo.sourceUrl} alt={props.data.companyLogo === null ? "" : props.data.companyLogo.altText}/>
                 <h4 className="white">{props.data.companyLogo === null ? props.data.companyName : ""}</h4>
             </CompanyRow>
             <MonthlyRow>
