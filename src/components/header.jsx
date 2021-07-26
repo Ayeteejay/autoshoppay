@@ -249,7 +249,7 @@ const Header = ({data}) =>{
                                     const totalLinks = props.allWpMenu.edges[0].node.menuItems.nodes.length - 1;
                                     if(index !== totalLinks){
                                         return (
-                                            <li key={value.id}><a href={value.url} className="header" >{value.label}</a></li>
+                                            <li key={value.id}><a href={value.url} className="header" onClick={()=>openMobileMenu()}>{value.label}</a></li>
                                         )
                                     }
                                     else{

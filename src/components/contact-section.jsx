@@ -10,6 +10,7 @@ padding:${props=>props.theme.spacing.lgTopBottom};
 
 const ContactContainer = styled.div`
 width:75%;
+
 `
 
 const DescriptionRow = styled.div`
@@ -24,6 +25,9 @@ padding:${props=>props.theme.spacing.bottom};
 `
 
 const FormRow = styled.div`
+`
+
+const ContactForm = styled.form`
 display:grid;
 grid-gap:2rem;
 grid-template-columns:1fr;
@@ -34,20 +38,29 @@ grid-template-areas: "your-name"
 "your-phone"
 "your-message"
 "submit-button";
-input{
+input,textarea{
     padding:1rem;
     font-family:Inter, san-serif;
     font-size:1rem;
     border:1px solid ${props=>props.theme.primaryColors.frost};
-    color:${props=>props.theme.primaryColors.frost};
+    color:${props=>props.theme.primaryColors.mintGreen};
+    transition:all ${props=>props.theme.animationSpeeds.fast};
     background:none;
     &::placeholder{
         color:${props=>props.theme.primaryColors.frost};
     };
+    &:focus{
+        background:${props=>props.theme.primaryColors.mintGreen};
+        color:${props=>props.theme.primaryColors.sable};
+        &::placeholder{
+            color:${props=>props.theme.primaryColors.sable};
+        }
+    }
 }
 .name{
     grid-area:your-name;
-}                    
+
+}        
 .shop{
     grid-area:your-shop;
 }
@@ -120,13 +133,14 @@ const Contact = (props) =>{
                             </div>
                         </DescriptionRow>
                         <FormRow>
-                            
+                            <ContactForm>
                             <input className="name" type="text" placeholder="Your name"></input>
                             <input className="shop" type="text" placeholder="Your shop name"></input>
                             <input className="email" type="text" placeholder="Your email address"></input>
                             <input className="phone" type="text" placeholder="Your phone number"></input>
-                            <input className="message" type="text area" placeholder="Message"></input>
+                            <textarea className="message" placeholder="Message"></textarea>
                             <button className="submit amber-cta">Submit</button>
+                            </ContactForm>   
                         </FormRow>
                     </ContactContainer>
                 </ContactWrapper>

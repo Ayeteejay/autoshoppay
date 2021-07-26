@@ -7,6 +7,7 @@ import TechnologySlider from './technology-slider.jsx';
 const OptionsWrapper = styled.div`
 display:flex;
 justify-content:center;
+background:${props=>props.theme.primaryColors.frost};
 `
 
 const OptionsContainer = styled.div`

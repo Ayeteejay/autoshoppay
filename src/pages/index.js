@@ -1,4 +1,5 @@
 import * as React from "react";
+import Fade from "react-reveal";
 import Layout from "../components/layout.jsx";
 import Hero from "../components/hero-section.jsx";
 import OurProcess from "../components/process-section.jsx";

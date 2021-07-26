@@ -38,7 +38,7 @@ top:75%;
 @media(min-width:${props=>props.theme.breakPoints.md}){
   display:grid;
   grid-gap:2rem;
-position:absolute;
+  position:absolute;
   grid-template-columns:repeat(2,1fr);
 }
 @media(min-width:${props=>props.theme.breakPoints.lg}){

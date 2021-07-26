@@ -6,6 +6,7 @@ import TestimonialSlider from './testimonial-slider.jsx';
 const TestimonialWrapper = styled.div`
 display:flex;
 justify-content:center;
+background:${props=>props.theme.primaryColors.frost};
 `
 
 const TestimonialContainer = styled.div`

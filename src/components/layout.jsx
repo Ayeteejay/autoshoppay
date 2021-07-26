@@ -113,6 +113,7 @@ a.footer{
     transition:${props=>props.theme.animationSpeeds.fast};
     display:flex;
     justify-content:center;
+    align-items:center;
     padding:1rem 0;
     &:hover{
         background:none;
