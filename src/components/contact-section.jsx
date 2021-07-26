@@ -126,7 +126,7 @@ const Contact = (props) =>{
                             <input className="email" type="text" placeholder="Your email address"></input>
                             <input className="phone" type="text" placeholder="Your phone number"></input>
                             <input className="message" type="text area" placeholder="Message"></input>
-                            <button className="submit blue-cta">Submit</button>
+                            <button className="submit amber-cta">Submit</button>
                         </FormRow>
                     </ContactContainer>
                 </ContactWrapper>
