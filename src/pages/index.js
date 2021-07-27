@@ -14,15 +14,17 @@ import ContactUs from "../components/contact-section.jsx";
 const Index = () => {
   return (
     <Layout>
-      <Hero></Hero>
-      <OurProcess></OurProcess>
-      <OurRates></OurRates>
-      <OurTechnology></OurTechnology>
-      <TechnologyOptions></TechnologyOptions>
-      <OurMission></OurMission>
-      <OurTestimonials></OurTestimonials>
-      <Partners></Partners>
-      <ContactUs></ContactUs>
+      <Fade>
+        <Hero></Hero>
+        <OurProcess></OurProcess>
+        <OurRates></OurRates>
+        <OurTechnology></OurTechnology>
+        <TechnologyOptions></TechnologyOptions>
+        <OurMission></OurMission>
+        <OurTestimonials></OurTestimonials>
+        <Partners></Partners>
+        <ContactUs></ContactUs>
+      </Fade>
     </Layout>
   );
 };

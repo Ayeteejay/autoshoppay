@@ -7,6 +7,7 @@ import RateSlider from './rates-slider.jsx';
 const RatesWrapper = styled.div`
 display:flex;
 justify-content:center;
+align-items:center;
 `;
 
 const RatesContainer = styled.div`
@@ -49,6 +50,21 @@ top:75%;
 const RatesRowMobile = styled.div`
 @media (min-width:${props=>props.theme.breakPoints.md}){
   display:none;
+}
+`
+
+const RatesSpaceRow = styled.div`
+background:${props=>props.theme.primaryColors.frost};
+display:none;
+@media(min-width:${props=>props.theme.breakPoints.md}){
+  display:block;
+  height:300px;
+}
+@media(min-width:${props=>props.theme.breakPoints.lg}){
+  height:175px;
+}
+@media(min-width:${props=>props.theme.breakPoints.xl}){
+  height:150px;
 }
 `
 
@@ -110,6 +126,7 @@ const Rates = () =>{
                   
                 `}
                 render={props=>(
+                  <React.Fragment>
                     <RatesWrapper id="pricing" style={{background:props.allWpPage.edges[0].node.template.rates.ourRates.backgroundColor}}>
                       <RatesContainer >
                           <DescriptionRow>
@@ -129,9 +146,11 @@ const Rates = () =>{
                             </RatesRowMobile>
                       </RatesContainer>                      
                     </RatesWrapper>
+                    <RatesSpaceRow>
+                    </RatesSpaceRow>
+                    </React.Fragment>
                 )}
             />
-
         </React.Fragment>
 
     )

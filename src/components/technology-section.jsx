@@ -10,12 +10,6 @@ justify-content:center;
 align-items:center;
 padding:${props=>props.theme.spacing.topBottom};
 background:${props=>props.theme.primaryColors.frost};
-@media(min-width:${props=>props.theme.breakPoints.md}){
-    padding:22rem 0 5rem 0;
-}
-@media(min-width:${props=>props.theme.breakPoints.lg}){
-    padding:14rem 0 5rem 0;
-}
 `;
 
 const TechnologyContainer = styled.div`

@@ -12,8 +12,6 @@ display:none;
 
 // Working on mobile carousel
 const MobileSlider = styled.div`
-margin:1rem;
-width:200px;
 .slide{
     padding:1rem;
 }
@@ -25,7 +23,6 @@ width:200px;
 const FeaturedSlider = (props) =>{
     let settings = {
         dots: false,
-        infinite: true,
         arrows: false,
         slidesToShow: 3,
         slidesToScroll: 1,
@@ -49,15 +46,17 @@ const FeaturedSlider = (props) =>{
                 })}
             </Slider>
             </DesktopSlider>
-            {/* <MobileSlider>
-            <Slider vertical={false} arrows={false}>
+            <MobileSlider>
+            <Slider vertical={false} arrows={false} autoplay={true} autoplaySpeed={0} slidesToShow={1} slidesToScroll={1} speed={8000} pauseOnHover={false}>
                 {featuredArr.map((value,index)=>{
                     return(
-                        <FeaturedCard key={index} data={value} slidesToShow={1} ></FeaturedCard>
+                        <div className="slide" key={index}>
+                        <FeaturedCard data={value} ></FeaturedCard>
+                        </div>
                     )
                 })}
             </Slider>
-            </MobileSlider> */}
+            </MobileSlider>
         </React.Fragment>
     )
 };

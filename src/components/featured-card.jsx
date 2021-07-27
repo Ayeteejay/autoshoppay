@@ -20,6 +20,7 @@ const MonthlyRow = styled.div`
 border-top:1px solid ${props=>props.theme.primaryColors.frost};
 display:flex;
 justify-content:space-between;
+flex-flow:column;
 margin:1.5rem 0 0 0;
 padding:1.5rem 0 0 0;
 .sales{
@@ -27,6 +28,9 @@ padding:1.5rem 0 0 0;
 }
 .savings{
 
+}
+@media(min-width:${props=>props.theme.breakPoints.md}){
+    flex-flow:row;
 }
 `
 const FeaturedCard = (props) => {

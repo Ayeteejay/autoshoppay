@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 import styled, {ThemeProvider} from 'styled-components';
 import "../styles/global.css";
 import "slick-carousel/slick/slick.css";
@@ -191,11 +192,15 @@ button{
 }
 `
 const Container = styled.div`
-padding:75px 0 0 0;
+padding:50px 0 0 0;
 `
 
 const Layout = ({children}) => {
     return (
+        <React.Fragment>
+            <Helmet>
+                <meta name="icon" href="../images/autoshoppay-icon.svg"/>
+            </Helmet>
         <ThemeProvider theme={theme}>
            <ThemeWrapper>
            <Header></Header>
@@ -205,6 +210,7 @@ const Layout = ({children}) => {
                 <Footer></Footer>
             </ThemeWrapper>
         </ThemeProvider>
+        </React.Fragment>
     )
 };
 export default Layout

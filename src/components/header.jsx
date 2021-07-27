@@ -160,9 +160,9 @@ const Header = ({data}) =>{
         }, []);
         return windowSize;
     };
-    const size = useWindowSize();
+        // const size = useWindowSize();
     useEffect(()=>{
-        const linkMenu = document.querySelectorAll("ul")[0];
+        // const linkMenu = document.querySelectorAll("ul")[0];
         if(windowSize.width > 992){
             setIsDesktop(true);
         }else{            
