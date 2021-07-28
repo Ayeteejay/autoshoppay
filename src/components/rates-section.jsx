@@ -8,17 +8,32 @@ const RatesWrapper = styled.div`
 display:flex;
 justify-content:center;
 align-items:center;
+flex-flow:column;
 `;
 
 const RatesContainer = styled.div`
 width:75%;
-padding:${props=>props.theme.spacing.topBottom};
+padding:${props=>props.theme.spacing.top};
 position:relative;
 display:flex;
 justify-content:center;
 flex-flow:column;
+@media(min-width:${props=>props.theme.breakPoints.md}){
+  padding:${props=>props.theme.spacing.topBottom};
+}
 @media(min-width:${props=>props.theme.breakPoints.lg}){
   align-items:center;
+}
+`
+
+const MobileContainer = styled.div`
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:${props=>props.theme.spacing.bottom};
+@media(min-width:${props=>props.theme.breakPoints.md}){
+  display:none;
 }
 `
 
@@ -48,6 +63,7 @@ top:75%;
 `
 
 const RatesRowMobile = styled.div`
+width:100%;
 @media (min-width:${props=>props.theme.breakPoints.md}){
   display:none;
 }
@@ -55,7 +71,7 @@ const RatesRowMobile = styled.div`
 
 const RatesSpaceRow = styled.div`
 background:${props=>props.theme.primaryColors.frost};
-display:none;
+height:25px;
 @media(min-width:${props=>props.theme.breakPoints.md}){
   display:block;
   height:300px;
@@ -141,10 +157,12 @@ const Rates = () =>{
                               <RateCard data={props.allWpPage.edges[0].node.template.rates.ourRates.rateBlockTwo}></RateCard>
                               <RateCard data={props.allWpPage.edges[0].node.template.rates.ourRates.rateBlockThree}></RateCard>
                           </RatesRow>
-                            <RatesRowMobile>
-                                <RateSlider data={props.allWpPage.edges[0].node.template.rates.ourRates}></RateSlider>
-                            </RatesRowMobile>
                       </RatesContainer>                      
+                        <MobileContainer>
+                          <RatesRowMobile>
+                                    <RateSlider data={props.allWpPage.edges[0].node.template.rates.ourRates}></RateSlider>
+                                </RatesRowMobile>
+                        </MobileContainer>
                     </RatesWrapper>
                     <RatesSpaceRow>
                     </RatesSpaceRow>

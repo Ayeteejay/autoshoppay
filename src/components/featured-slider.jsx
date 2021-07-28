@@ -9,8 +9,6 @@ display:none;
     display:block;
 }
 `
-
-// Working on mobile carousel
 const MobileSlider = styled.div`
 .slide{
     padding:1rem;

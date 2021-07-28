@@ -5,7 +5,7 @@ import Slider from 'react-slick';
 
 const SliderContainer = styled.div`
 .slide{
-    padding:1rem;
+    padding:0 10px 25px 10px;
     cursor:grab;
 }
 ul.slick-dots li.slick-active{
@@ -26,8 +26,11 @@ const RatesSlider = (props) =>{
         infinite: true,
         speed: 500,
         slidesToShow: 1,
-        slidesToScroll: 1,
+        slidesToScroll: 3,
         arrows:false,
+        centerMode:true,
+        className:"center",
+        centerPadding:"50px",
         
     customPaging: page => (
         <div
