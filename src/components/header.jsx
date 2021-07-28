@@ -106,31 +106,50 @@ position:relative;
 cursor:pointer;
 display:block;
 height:16px;
-  .topBun,.meat,.bottomBun{
+  .top-bun,.meat,.bottom-bun{
       position:absolute;
       background:${props=>props.theme.primaryColors.aspBlue};
-      transition:${props=>props.theme.animationSpeeds.fast};
       height:2px;
       width:30px;
   }
-  .topBun{
-      top:0px;
+  .top-bun{
+    top:0px;
+    transition:all 400ms;
   }
   .meat{
-      top:7px;
+    top:7px;
+    transition:all 300ms;
   }
-  .bottomBun{
-  bottom:0px;
+  .bottom-bun{
+    bottom:0px;
+    transition:all 200ms;
   }
-  .burger-flip{
-      transform:translate(0,4px) rotate(-45deg);
+  .grill{
+    opacity:0;
+    width:0;   
   }
-  .burger-revert{
-      transform:translate(0,-10px) rotate(45deg);
-  }
-  .smash-burger{
+  .lettuce{
+      position:relative;
+      top:50%;
+      left:50%;
       opacity:0;
-      transform:translate(0,-5px);
+      transition:all 500ms;
+  }
+  .top-lettuce, .bottom-lettuce{
+    position:absolute;
+    background:${props=>props.theme.primaryColors.aspBlue};
+    height:2px;
+    width:30px;
+    transition:all 500ms;
+  }
+  .cook{
+      opacity:1;
+  }
+  .top-slice{
+    transform:rotate(-45deg);
+  }
+  .bottom-slice{
+    transform:rotate(45deg);
   }
   @media(min-width:${props=>props.theme.breakPoints.lg}){
       display:none;
@@ -174,13 +193,19 @@ const Header = ({data}) =>{
     // Open mobile dropdown menu
     const openMobileMenu = () =>{
         const mobileContainer = document.querySelector(".mobile-container");
-        const bunTop = document.querySelector(".topBun");
+        const bunTop = document.querySelector(".top-bun");
         const burgerMiddle = document.querySelector(".meat");
-        const bunBottom = document.querySelector(".bottomBun");
+        const bunBottom = document.querySelector(".bottom-bun");
+        const lettuceHead = document.querySelector(".lettuce");
+        const lettuceTop = document.querySelector(".top-lettuce");
+        const lettuceBottom = document.querySelector(".bottom-lettuce");
         mobileContainer.classList.toggle("show");
-        bunTop.classList.toggle("burger-flip");
-        burgerMiddle.classList.toggle("smash-burger");
-        bunBottom.classList.toggle("burger-revert");
+        bunTop.classList.toggle("grill");
+        burgerMiddle.classList.toggle("grill");
+        bunBottom.classList.toggle("grill");
+        lettuceHead.classList.toggle("cook");
+        lettuceTop.classList.toggle("top-slice");
+        lettuceBottom.classList.toggle("bottom-slice");
         if(mobileMenu === false){
             setMobileMenu(true);               
         }else if(mobileMenu){
@@ -236,9 +261,13 @@ const Header = ({data}) =>{
                         </ul>
                     </DesktopLinkCol>                
                     <Whopper onClick={()=>openMobileMenu()}>
-                        <span className="topBun"></span>
+                        <span className="top-bun"></span>
                         <span className="meat"></span>
-                        <span className="bottomBun"></span>
+                        <span className="bottom-bun"></span>
+                        <span className="lettuce">
+                            <span className="top-lettuce"></span>
+                            <span className="bottom-lettuce"></span>
+                        </span>
                     </Whopper>
                 </Desktop>
                 <Mobile>

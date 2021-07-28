@@ -8,17 +8,7 @@ const CardWrapper = styled.div`
      background:${props=>props.theme.primaryColors.aspBlue};
      transition:all ${props=>props.theme.animationSpeeds.normal};
  }
-//  &:hover{
-//      transform:scale(1.05);
-//      border:1px solid ${props=>props.theme.primaryColors.amber};
-//      -webkit-box-shadow: 0px 21px 18px 5px rgba(0,0,0,0.5); 
-// box-shadow: 0px 21px 18px 5px rgba(0,0,0,0.5);
-//      .device-row{
-//         background:${props=>props.theme.primaryColors.amber};
-//      }
-//  }
 `
-
 
 const BulletRow = styled.div`
  padding:2rem;

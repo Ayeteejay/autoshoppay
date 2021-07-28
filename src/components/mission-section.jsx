@@ -5,6 +5,7 @@ import { graphql, StaticQuery } from 'gatsby';
 const MissionWrapper = styled.div`
 display:flex;
 justify-content:center;
+align-items:center;
 `;
 
 const MissionContainer = styled.div`

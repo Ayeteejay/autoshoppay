@@ -16,16 +16,18 @@ padding:${props=>props.theme.spacing.topBottom};
 const DescriptionRow = styled.div`
 display:flex;
 flex-flow:column;
+align-items:flex-start;
 justify-content:flex-start;
 padding:0 0 3rem 0;
 @media(min-width:${props=>props.theme.breakPoints.lg}){
   text-align:center;
   justify-content:center;
+  align-items:center;
 }
 `
 
 const TestimonialRow = styled.div`
-
+padding: 0 0 2rem 0;
 `
 
 const Testimonial = (props) =>{

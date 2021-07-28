@@ -5,7 +5,7 @@ import Slider from 'react-slick';
 
 const SliderContainer = styled.div`
 .slide{
-    padding:1rem;
+    padding:0 10px 25px 10px;
     cursor:grab;
 }
 ul.slick-dots li.slick-active{
@@ -28,6 +28,9 @@ const TechnologySlider = (props) =>{
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows:false,
+        centerMode:true,
+        className:"center",
+        centerPadding:"120px",
     customPaging: page => (
         <div
           style={{
@@ -46,7 +49,9 @@ const TechnologySlider = (props) =>{
             <Slider {...settings}>
                 {technologyArr.map((value,index)=>{
                     return(
-                        <TechnologyCard key={index} data={value}></TechnologyCard>
+                        <div className="slide" key={index}>
+                        <TechnologyCard data={value}></TechnologyCard>
+                        </div>
                     )
                 })}
             </Slider>

@@ -7,29 +7,20 @@ import TechnologySlider from './technology-slider.jsx';
 const OptionsWrapper = styled.div`
 display:flex;
 justify-content:center;
+align-items:center;
+flex-flow:column;
 background:${props=>props.theme.primaryColors.frost};
 `
 
-const OptionsContainer = styled.div`
+const DesktopContainer = styled.div`
 width:75%;
 padding:${props=>props.theme.spacing.topBottom};
 display:flex;
 justify-content:center;
-flex-flow:column
-`
-
-const DescriptionRow = styled.div`
-display:flex;
+align-items:center;
 flex-flow:column;
-justify-content:flex-start;
-padding:0 0 3rem 0;
-@media(min-width:${props=>props.theme.breakPoints.lg}){
-  text-align:center;
-  justify-content:center;
-}
 `
-
-const TechnologyRow = styled.div`
+const TechnologyRowDesktop = styled.div`
 display:none;
 @media(min-width:${props=>props.theme.breakPoints.md}){
   display:grid;
@@ -41,11 +32,31 @@ display:none;
 }
 `
 
-const TechnologyRowMobile = styled.div`
-@media (min-width:${props=>props.theme.breakPoints.md}){
-  display:none;
-  padding:${props=>props.theme.spacing.bottom};
+const DescriptionRow = styled.div`
+display:flex;
+flex-flow:column;
+justify-content:flex-start;
+padding:0 0 3rem 0;
+@media(min-width:${props=>props.theme.breakPoints.lg}){
+  width:75%;
+  text-align:center;
+  justify-content:center;
 }
+`
+
+const MobileContainer = styled.div`
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+@media(min-width:${props=>props.theme.breakPoints.md}){
+  display:none;
+}
+`
+
+const TechnologyRowMobile = styled.div`
+width:100%;
+padding:${props=>props.theme.spacing.bottom};
 `
 
 const Options = () => {
@@ -111,23 +122,25 @@ const Options = () => {
         `
         } render={props=>(
             <OptionsWrapper>
-            <OptionsContainer>
+            <DesktopContainer>
                 <DescriptionRow>
                     <h5>{props.allWpPage.edges[0].node.template.options.technologyOptions.subHeader}</h5>
                     <h3 className="blue">{props.allWpPage.edges[0].node.template.options.technologyOptions.header}</h3>
                     <p>{props.allWpPage.edges[0].node.template.options.technologyOptions.description}</p>
                 </DescriptionRow>
-                <TechnologyRow>
+                <TechnologyRowDesktop>
                     {(Object.values(props.allWpPage.edges[0].node.template.options.technologyOptions)).slice(Object.keys(props.allWpPage.edges[0].node.template.options.technologyOptions).length-4).map((value,index)=>{
                         return (
                             <TechnologyCard key={index} data={value}></TechnologyCard>
                         )
                     })}
-                </TechnologyRow>
-                <TechnologyRowMobile>
+                </TechnologyRowDesktop>
+            </DesktopContainer>
+            <MobileContainer>
+                 <TechnologyRowMobile>
                     <TechnologySlider data={props.allWpPage.edges[0].node.template.options.technologyOptions}></TechnologySlider>
-                </TechnologyRowMobile>
-            </OptionsContainer>
+                  </TechnologyRowMobile>
+            </MobileContainer>
         </OptionsWrapper>
         )}
         />

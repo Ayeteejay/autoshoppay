@@ -11,7 +11,7 @@ align-items:center;
 flex-flow:column;
 `;
 
-const RatesContainer = styled.div`
+const DesktopContainer = styled.div`
 width:75%;
 padding:${props=>props.theme.spacing.top};
 position:relative;
@@ -43,6 +43,7 @@ flex-flow:column;
 justify-content:flex-start;
 padding:0 0 3rem 0;
 @media(min-width:${props=>props.theme.breakPoints.lg}){
+  width:75%;
   text-align:center;
 justify-content:center; 
 }
@@ -144,7 +145,7 @@ const Rates = () =>{
                 render={props=>(
                   <React.Fragment>
                     <RatesWrapper id="pricing" style={{background:props.allWpPage.edges[0].node.template.rates.ourRates.backgroundColor}}>
-                      <RatesContainer >
+                      <DesktopContainer >
                           <DescriptionRow>
                               <h5>{props.allWpPage.edges[0].node.template.rates.ourRates.subHeader}</h5>
                               <h3 className="blue">{props.allWpPage.edges[0].node.template.rates.ourRates.header}</h3>
@@ -157,7 +158,7 @@ const Rates = () =>{
                               <RateCard data={props.allWpPage.edges[0].node.template.rates.ourRates.rateBlockTwo}></RateCard>
                               <RateCard data={props.allWpPage.edges[0].node.template.rates.ourRates.rateBlockThree}></RateCard>
                           </RatesRow>
-                      </RatesContainer>                      
+                      </DesktopContainer>                      
                         <MobileContainer>
                           <RatesRowMobile>
                                     <RateSlider data={props.allWpPage.edges[0].node.template.rates.ourRates}></RateSlider>

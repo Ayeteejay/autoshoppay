@@ -5,8 +5,7 @@ import Slider from 'react-slick';
 
 const SliderContainer = styled.div`
 .slide{
-    padding:1rem;
-    cursor:grab;
+    padding:1rem 0;
 }
 ul.slick-dots li.slick-active{
     background-color:#0036FF;    
@@ -23,11 +22,11 @@ ul.slick-dots li{
 const TestimonialSlider = (props) =>{
     let settings = {
         dots: true,
-        infinite: true,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows:false,
+        fade:true,
     customPaging: page => (
         <div
           style={{
@@ -46,7 +45,9 @@ const TestimonialSlider = (props) =>{
             <Slider {...settings}>
                 {testimonialArr.map((value,index)=>{
                     return(
-                        <TestimonialCard key={index} data={value}></TestimonialCard>
+                        <div className="slide" key={index} >
+                        <TestimonialCard data={value}></TestimonialCard>
+                        </div>
                     )
                 })}
             </Slider>

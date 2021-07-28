@@ -10,6 +10,7 @@ justify-content:center;
 align-items:center;
 padding:${props=>props.theme.spacing.topBottom};
 background:${props=>props.theme.primaryColors.frost};
+flex-flow:column;
 `;
 
 const TechnologyContainer = styled.div`
@@ -52,10 +53,19 @@ grid-gap:2rem;
 
 const DeviceRowMobile = styled.div`
 padding:3rem 0 0 0;
-@media (min-width:${props=>props.theme.breakPoints.md}){
+width:100%;
+`
+
+const MobileContainer = styled.div`
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+@media(min-width:${props=>props.theme.breakPoints.md}){
   display:none;
 }
 `
+
 
 const Technology = () =>{
     return (
@@ -143,10 +153,12 @@ const Technology = () =>{
                               )
                             })}
                             </DeviceRow>              
-                            <DeviceRowMobile>
-                              <DeviceSlider data={props.allWpPage.edges[0].node.template.technology.ourTechnology}></DeviceSlider>
-                            </DeviceRowMobile>                                 
                         </TechnologyContainer>
+                        <MobileContainer>
+                           <DeviceRowMobile>
+                              <DeviceSlider data={props.allWpPage.edges[0].node.template.technology.ourTechnology}></DeviceSlider>
+                            </DeviceRowMobile>  
+                        </MobileContainer>
                     </TechnologyWrapper>
                 )}
             />

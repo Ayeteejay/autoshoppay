@@ -5,7 +5,6 @@ const CardWrapper = styled.div`
 .card-settings{
     background:${props=>props.theme.secondaryColors.offGray};
     display:grid;
-    cursor:grab;
 }
 .location-card, .no-location-card{
     grid-template-columns:1fr;
