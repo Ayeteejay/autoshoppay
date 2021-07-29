@@ -239,9 +239,9 @@ const Header = ({data}) =>{
                 <React.Fragment>
                 <Desktop>
                     <LogoCol>
-                        {/* <Link to="/"> */}
+                        <Link to="/">
                             <img src={DarkLogo} alt="AutoShopPay Logo" className="logo"/>
-                        {/* </Link> */}
+                        </Link>
                     </LogoCol>
                     <DesktopLinkCol>
                         <ul>     
