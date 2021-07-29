@@ -129,7 +129,7 @@ const Contact = (props) =>{
                             <div className="description">
                                 <h5 className="white">{props.allWpPage.edges[0].node.template.contact.contactUs.subHeader}</h5>
                                 <h3 className="green">{props.allWpPage.edges[0].node.template.contact.contactUs.header}</h3>
-                                <p className="white">{props.allWpPage.edges[0].node.template.contact.contactUs.description}</p>
+                                <p className="white" dangerouslySetInnerHTML={{__html:`${props.allWpPage.edges[0].node.template.contact.contactUs.description}`}}></p>
                             </div>
                         </DescriptionRow>
                         <FormRow>

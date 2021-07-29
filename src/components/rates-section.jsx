@@ -149,9 +149,7 @@ const Rates = () =>{
                           <DescriptionRow>
                               <h5>{props.allWpPage.edges[0].node.template.rates.ourRates.subHeader}</h5>
                               <h3 className="blue">{props.allWpPage.edges[0].node.template.rates.ourRates.header}</h3>
-                              <p>
-                              {props.allWpPage.edges[0].node.template.rates.ourRates.description}
-                              </p>
+                              <p dangerouslySetInnerHTML={{__html:`${props.allWpPage.edges[0].node.template.rates.ourRates.description}`}}></p>
                           </DescriptionRow>
                             <RatesRow>
                               <RateCard data={props.allWpPage.edges[0].node.template.rates.ourRates.rateBlockOne}></RateCard>

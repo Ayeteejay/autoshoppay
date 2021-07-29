@@ -142,8 +142,8 @@ const Hero = (props) =>{
             <HeroContainer>
                 <HeaderColumn>
                   <div className="description">
-                    <h1 className="white">{props.allWpPage.edges[0].node.template.hero.heroSection.header}</h1>
-                    <p className="white">{props.allWpPage.edges[0].node.template.hero.heroSection.description}</p>                    
+                    <h1 className="white">{props.allWpPage.edges[0].node.template.hero.heroSection.header}</h1>           
+                    <p className="white" dangerouslySetInnerHTML={{__html:`${props.allWpPage.edges[0].node.template.hero.heroSection.description}`}}></p>                    
                     <a href={props.allWpPage.edges[0].node.template.hero.heroSection.button.url} className="frost-cta">{props.allWpPage.edges[0].node.template.hero.heroSection.button.title}</a>         
                   </div>  
                 </HeaderColumn>
