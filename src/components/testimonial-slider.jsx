@@ -5,17 +5,9 @@ import Slider from 'react-slick';
 
 const SliderContainer = styled.div`
 .slide{
-    padding:1rem 0;
-}
-ul.slick-dots li.slick-active{
-    background-color:#0036FF;    
-    border-radius:50%;
-    height:12px;
-    transition:all ${props=>props.theme.animationSpeeds.extraFast} ease-in-out;
-}
-ul.slick-dots li{
-    height:12px;
-    width:12px;
+    @media(min-width:${props=>props.theme.breakPoints.lg}){
+        padding:0 200px 25px 200px
+    }
 }
 `
 
@@ -26,7 +18,9 @@ const TestimonialSlider = (props) =>{
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows:false,
-        fade:true,
+        centerMode:true,
+        className:"center",
+        centerPadding:"50px",
     customPaging: page => (
         <div
           style={{

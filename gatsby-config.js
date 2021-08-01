@@ -9,6 +9,18 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `AutoShopPay`,
+        short_name: `AutoShopPay`,
+        start_url: `/`,
+        background_color: `#001233`,
+        theme_color: `#0036FF`,
+        display: `standalone`,
+        icon: `./src/images/autoshoppay-icon.svg`,
+      },
+    },
+    {
       resolve: "gatsby-source-wordpress",
       options: {
         url: process.env.WP_DATA,

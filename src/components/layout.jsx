@@ -190,6 +190,20 @@ button{
     font-size:1rem;
     cursor:pointer;
 }
+.slide{
+    padding:0 10px 25px 10px;
+    cursor:grab;
+}
+ul.slick-dots li.slick-active{
+    background-color:#0036FF;    
+    border-radius:50%;
+    height:12px;
+    transition:all ${props=>props.theme.animationSpeeds.extraFast} ease-in-out;
+}
+ul.slick-dots li{
+    height:12px;
+    width:12px;
+}
 `
 const Container = styled.div`
 padding:50px 0 0 0;

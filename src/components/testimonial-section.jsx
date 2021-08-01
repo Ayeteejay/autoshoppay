@@ -6,12 +6,14 @@ import TestimonialSlider from './testimonial-slider.jsx';
 const TestimonialWrapper = styled.div`
 display:flex;
 justify-content:center;
+flex-flow:column;
+align-items:center;
 background:${props=>props.theme.primaryColors.frost};
 `
 
-const TestimonialContainer = styled.div`
+const DescriptionContainer = styled.div`
 width:75%;
-padding:${props=>props.theme.spacing.topBottom};
+padding:${props=>props.theme.spacing.top};
 `
 const DescriptionRow = styled.div`
 display:flex;
@@ -26,8 +28,9 @@ padding:0 0 3rem 0;
 }
 `
 
-const TestimonialRow = styled.div`
-padding: 0 0 2rem 0;
+const SliderRow = styled.div`
+padding:${props=>props.theme.spacing.bottom};
+width:100%;
 `
 
 const Testimonial = (props) =>{
@@ -108,16 +111,16 @@ const Testimonial = (props) =>{
             `}
             render={props=>(
                 <TestimonialWrapper>
-                    <TestimonialContainer>
+                    <DescriptionContainer>
                         <DescriptionRow>
                             <h5>{props.allWpPage.edges[0].node.template.testimonials.ourTestimonials.subHeader}</h5>      
                             <h3 className="blue">{props.allWpPage.edges[0].node.template.testimonials.ourTestimonials.header}</h3>                            
                             <p dangerouslySetInnerHTML={{__html:`${props.allWpPage.edges[0].node.template.testimonials.ourTestimonials.description}`}}></p>                            
                         </DescriptionRow>
-                        <TestimonialRow>
+                    </DescriptionContainer>
+                        <SliderRow>
                           <TestimonialSlider data={props.allWpPage.edges[0].node.template.testimonials.ourTestimonials} quantityOfQuotes={props.allWpPage.edges[0].node.template.testimonials.ourTestimonials.quoteNumber}></TestimonialSlider>
-                        </TestimonialRow>
-                    </TestimonialContainer>
+                        </SliderRow>
                 </TestimonialWrapper>
             )}
             />      

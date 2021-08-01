@@ -40,7 +40,7 @@ grid-template-areas: "your-name"
 "submit-button";
 input,textarea{
     padding:1rem;
-    font-family:Inter, san-serif;
+    font-family:"Work Sans", san-serif;
     font-size:1rem;
     border:1px solid ${props=>props.theme.primaryColors.frost};
     color:${props=>props.theme.primaryColors.mintGreen};

@@ -18,6 +18,9 @@ const CardWrapper = styled.div`
 
 const LocationColumn = styled.div`
 background-size:cover;
+@media(max-width:${props=>props.theme.breakPoints.lg}){
+    display:none !important;
+}
 `
 
 const QuoteColumn = styled.div`
