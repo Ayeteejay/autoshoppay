@@ -149,17 +149,21 @@ const Footer = () => {
             <StaticQuery query={
                 graphql`
                 {
-                    wpMenu {
-                      menuItems {
-                        nodes {
-                          url
-                          label
+                    allWpMenu(filter: {name: {eq: "Footer Menu"}}) {
+                      edges {
+                        node {
                           id
+                          menuItems {
+                            nodes {
+                              id
+                              url
+                              label
+                            }
+                          }
                         }
                       }
                     }
-                  }
-                                  
+                  }                  
                 `
             }
         render={props=>(
@@ -174,7 +178,7 @@ const Footer = () => {
                         <div className="product">
                         <ul>
                             <li>Product</li>
-                            {props.wpMenu.menuItems.nodes.map((value)=>{
+                            {props.allWpMenu.edges[0].node.menuItems.nodes.map((value)=>{
                                 return (
                                     <li key={value.id}><a href={value.url} className="footer">{value.label}</a></li>
                                 )

@@ -219,7 +219,7 @@ const Layout = ({children}) => {
             </Helmet>
         <ThemeProvider theme={theme}>
            <ThemeWrapper>
-           {/* <Header></Header> */}
+           <Header></Header>
                 <Container>         
                     {children}
                 </Container>
