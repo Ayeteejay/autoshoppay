@@ -176,14 +176,14 @@ const Footer = () => {
                         </LogoCol>    
                 <LinkCol>
                         <div className="product">
-                        <ul>
+                        {/* <ul>
                             <li>Product</li>
                             {props.allWpMenu.edges[0].node.menuItems.nodes.map((value)=>{
                                 return (
-                                    <li key={value.id}>hello</li>
+                                    <li key={value.id}><a href={value.url} className="footer">{value.label}</a></li>
                                 )
                             })}
-                        </ul>
+                        </ul> */}
                         </div>
                         <div className="contact">                          
                             <p className="title">Contact</p>
