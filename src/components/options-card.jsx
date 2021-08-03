@@ -11,7 +11,7 @@ flex-flow:column;
 
 const TechnologyRow = styled.div`
 display:flex;
-justify-content:center;
+justify-content:center;ß
 img{
     max-width:80%;
     padding:0 0 1rem 0;
@@ -19,7 +19,7 @@ img{
 `
 
 
-const TechnologyCard = (props) =>{
+const OptionsCard = (props) =>{
     return(
         <CardWrapper>
             <TechnologyRow>
@@ -29,4 +29,4 @@ const TechnologyCard = (props) =>{
         </CardWrapper>
     )
 };
-export default TechnologyCard
+export default OptionsCard

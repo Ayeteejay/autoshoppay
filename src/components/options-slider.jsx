@@ -1,9 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
-import TechnologyCard from './technology-card.jsx';
+import OptionsCard from './options-card.jsx';
 import Slider from 'react-slick';
 
-const TechnologySlider = (props) =>{
+const OptionsSlider = (props) =>{
     let settings = {
         dots: true,
         infinite: true,
@@ -32,11 +31,11 @@ const TechnologySlider = (props) =>{
                 {technologyArr.map((value,index)=>{
                     return(
                         <div className="slide" key={index}>
-                        <TechnologyCard data={value}></TechnologyCard>
+                        <OptionsCard data={value}></OptionsCard>
                         </div>
                     )
                 })}
             </Slider>
     )
 };
-export default TechnologySlider;
+export default OptionsSlider;

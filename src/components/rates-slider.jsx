@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import RateCard from './rate-card.jsx';
 import Slider from 'react-slick';
 

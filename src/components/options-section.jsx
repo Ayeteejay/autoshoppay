@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import {graphql, StaticQuery} from 'gatsby';
-import TechnologyCard from './technology-card.jsx';
-import TechnologySlider from './technology-slider.jsx';
+import TechnologyCard from './options-card.jsx';
+import OptionsSlider from './options-slider.jsx';
 
 const OptionsWrapper = styled.div`
 display:flex;
@@ -138,7 +138,7 @@ const Options = () => {
             </DesktopContainer>
             <MobileContainer>
                  <TechnologyRowMobile>
-                    <TechnologySlider data={props.allWpPage.edges[0].node.template.options.technologyOptions}></TechnologySlider>
+                    <OptionsSlider data={props.allWpPage.edges[0].node.template.options.technologyOptions}></OptionsSlider>
                   </TechnologyRowMobile>
             </MobileContainer>
         </OptionsWrapper>
