@@ -180,7 +180,7 @@ const Footer = () => {
                             <li>Product</li>
                             {props.allWpMenu.edges[0].node.menuItems.nodes.map((value)=>{
                                 return (
-                                    <li key={value.id}><a href={"/" + value.url} className="footer">{value.label}</a></li>
+                                    <li key={value.id}>{value.label}</li>
                                 )
                             })}
                         </ul>
