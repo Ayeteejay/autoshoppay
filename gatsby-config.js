@@ -1,11 +1,11 @@
-// require("dotenv").config({
-//   path: `.env.${process.env.NODE_ENV}`,
-// });
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 
 module.exports = {
   siteMetadata: {
     title: "AutoShopPay",
-    siteUrl: "http://www.autoshoppay.io",
+    siteUrl: process.env.SITE_URL,
   },
   plugins: [
     {
@@ -23,7 +23,7 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        url: "http://www.autoshoppay.io/graphql",
+        url: process.env.WP_DATA,
       },
     },
     "gatsby-plugin-styled-components",
