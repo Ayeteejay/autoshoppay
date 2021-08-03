@@ -223,7 +223,7 @@ const Layout = ({children}) => {
                 <Container>         
                     {children}
                 </Container>
-                {/* <Footer></Footer> */}
+                <Footer></Footer>
             </ThemeWrapper>
         </ThemeProvider>
         </React.Fragment>
