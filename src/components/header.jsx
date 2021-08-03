@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-import {Link, graphql, StaticQuery} from 'gatsby';
+import {graphql, StaticQuery} from 'gatsby';
 import DarkLogo from '../images/autoshoppay-logo-dark.svg';
 import Background from '../images/autoshoppay-background.svg';
 
@@ -241,9 +241,9 @@ const Header = ({data}) =>{
                 <React.Fragment>
                 <Desktop>
                     <LogoCol>
-                        <Link to="/">
+                        <a href="/">
                             <img src={DarkLogo} alt="AutoShopPay Logo" className="logo"/>
-                        </Link>
+                            </a>
                     </LogoCol>
                     <DesktopLinkCol>
                         <ul>     

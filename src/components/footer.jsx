@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, {keyframes} from 'styled-components';
-import {Link, graphql, StaticQuery} from 'gatsby';
+import {graphql, StaticQuery} from 'gatsby';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faFacebookF, faTwitter} from '@fortawesome/free-brands-svg-icons';
 import LightLogo from '../images/autoshoppay-logo-light.svg';
@@ -170,8 +170,9 @@ const Footer = () => {
             <FooterContainer>
                 <LinkRow>             
                         <LogoCol>
-                            <Link to="/">
-                            <img src={LightLogo} alt="AutoShopPay Logo" className="logo"/></Link>
+                            <a href="/">
+                            <img src={LightLogo} alt="AutoShopPay Logo" className="logo"/>
+                            </a>
                         </LogoCol>    
                 <LinkCol>
                         <div className="product">
