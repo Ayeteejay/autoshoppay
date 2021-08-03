@@ -170,9 +170,9 @@ const Footer = () => {
             <FooterContainer>
                 <LinkRow>             
                         <LogoCol>
-                            {/* <Link to="/">
+                            <Link to="/">
                             <img src={LightLogo} alt="AutoShopPay Logo" className="logo"/>
-                            </Link> */}
+                            </Link>
                         </LogoCol>    
                 <LinkCol>
                         <div className="product">
