@@ -214,7 +214,6 @@ const Layout = ({children}) => {
         <React.Fragment>
             <Helmet>
                 <meta name="icon" href="../images/autoshoppay-icon.svg"/>
-                <meta name="keywords" content="AutoShopPay"/>
                 <meta name="description" content="The definitive payment solution for all auto shops."/>
             </Helmet>
         <ThemeProvider theme={theme}>
