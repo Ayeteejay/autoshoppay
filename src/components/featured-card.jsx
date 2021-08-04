@@ -38,16 +38,16 @@ const FeaturedCard = (props) => {
         <CardWrapper>
             <CompanyRow>
                 <img src={props.data.companyLogo === null ? "" : props.data.companyLogo.sourceUrl} alt={props.data.companyLogo === null ? "" : props.data.companyLogo.altText}/>
-                <h4 className="white">{props.data.companyLogo === null ? props.data.companyName : ""}</h4>
+                <p className="white">{props.data.companyLogo === null ? props.data.companyName : ""}</p>
             </CompanyRow>
             <MonthlyRow>
                 <div className="sales">
-                  <h5 className="white">Monthly Sales</h5>
-                    <p className="white thick-header">{props.data.monthlySales}</p>
+                  <p className="uppercase-header white">Monthly Sales</p>
+                    <p className="white cash-header">{props.data.monthlySales}</p>
                 </div>
                 <div className="savings">
-                <h5 className="green">Monthly Savings</h5>
-                    <p className="green thick-header">{props.data.monthlySavings}</p>
+                <p className="uppercase-header green">Monthly Savings</p>
+                    <p className="green cash-header">{props.data.monthlySavings}</p>
                 </div>
             </MonthlyRow>
         </CardWrapper>

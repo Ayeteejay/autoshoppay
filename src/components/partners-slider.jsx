@@ -14,7 +14,7 @@ position:relative;
     align-items:center;
 }
 .partner-logo{
-    max-height:25px;
+    max-height:20px;
     @media(min-width:${props=>props.theme.breakPoints.md}){
         max-height:40px;
     }

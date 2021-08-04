@@ -124,7 +124,7 @@ const Options = () => {
             <OptionsWrapper>
             <DesktopContainer>
                 <DescriptionRow>
-                    <h5>{props.allWpPage.edges[0].node.template.options.technologyOptions.subHeader}</h5>
+                    <p className="section-subheader">{props.allWpPage.edges[0].node.template.options.technologyOptions.subHeader}</p>
                     <h3 className="blue">{props.allWpPage.edges[0].node.template.options.technologyOptions.header}</h3>
                     <p dangerouslySetInnerHTML={{__html:`${props.allWpPage.edges[0].node.template.options.technologyOptions.description}`}}></p>
                 </DescriptionRow>

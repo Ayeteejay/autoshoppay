@@ -72,6 +72,24 @@ a{
 p{
     line-height:1.5;
 }
+p.section-subheader{
+    font-size:0.9375rem;
+    text-transform:uppercase;
+    font-weight:600;
+    padding:0 0 0.5rem 0;
+}
+p.uppercase-header{
+    font-size:0.9375rem;
+    text-transform:uppercase;
+    font-weight:600;
+    padding:0 0 0.5rem 0;
+}
+p.cash-header{
+    font-size:2rem;
+    line-height:1.1;
+    padding:0 0 1.5rem 0;
+    font-weight:600
+}
 p.small-header{
     font-size:1.4375rem;
     font-weight:500;
@@ -133,7 +151,7 @@ a.footer{
     padding:1rem 0;
     display:block;
     text-align:center;
-    max-width:35%;
+    max-width:100%;
     margin:1rem 0 0 0;
     &:hover{
         color:${props=>props.theme.primaryColors.frost};
@@ -142,6 +160,7 @@ a.footer{
     }
     @media(min-width:${props=>props.theme.breakPoints.lg}){
         padding:1rem 1.5rem;
+        max-width:50%;
     }
 }
 .blue-cta{
@@ -213,6 +232,7 @@ const Layout = ({children}) => {
     return (
         <React.Fragment>
             <Helmet>
+                <title>AutoShopPay</title>
                 <meta name="icon" href="../images/autoshoppay-icon.svg"/>
                 <meta name="keywords" content="AutoShopPay"/>
                 <meta name="description" content="The definitive payment solution for all auto shops."/>

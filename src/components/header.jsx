@@ -49,7 +49,7 @@ const Mobile = styled.div`
         .mobile-row{
             width:80%;
             height:100vh;     
-            padding:2rem 0;
+            padding:3rem 0;
             transition:${props=>props.theme.animationSpeeds.fast};
             ul{
                 list-style:none;

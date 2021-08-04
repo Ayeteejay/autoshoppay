@@ -55,6 +55,14 @@ const Process = () =>{
                                 fieldGroupName
                                 header
                                 subHeader
+                                backgroundImage {
+                                  altText
+                                  sourceUrl
+                                }
+                                backgroundColor
+                                backgroundPosition
+                                backgroundRepeat
+                                backgroundSize
                                 featureBlockOne {
                                   description
                                   fieldGroupName
@@ -91,14 +99,6 @@ const Process = () =>{
                                     sourceUrl
                                   }
                                 }
-                                backgroundImage {
-                                  altText
-                                  sourceUrl
-                                }
-                                backgroundColor
-                                backgroundPosition
-                                backgroundRepeat
-                                backgroundSize
                               }
                             }
                           }
@@ -114,16 +114,17 @@ const Process = () =>{
                     <ProcessContainer >
                         <DescriptionRow>
                           <div className="description">
-                            <h5>{props.allWpPage.edges[0].node.template.process.ourProcess.subHeader}</h5>
+                            <p className="section-subheader">{props.allWpPage.edges[0].node.template.process.ourProcess.subHeader}</p>
                             <h3>{props.allWpPage.edges[0].node.template.process.ourProcess.header}</h3>
                             <p dangerouslySetInnerHTML={{__html:`${props.allWpPage.edges[0].node.template.process.ourProcess.description}`}}></p>  
                           </div>
                         </DescriptionRow>
-                        <ProgramsRow>                                  
-                            <ProgramCard icon={props.allWpPage.edges[0].node.template.process.ourProcess.featureBlockOne.icon.sourceUrl} smallHeader={props.allWpPage.edges[0].node.template.process.ourProcess.featureBlockOne.title} description={props.allWpPage.edges[0].node.template.process.ourProcess.featureBlockOne.description}></ProgramCard>
-                            <ProgramCard icon={props.allWpPage.edges[0].node.template.process.ourProcess.featureBlockTwo.icon.sourceUrl} smallHeader={props.allWpPage.edges[0].node.template.process.ourProcess.featureBlockTwo.title} description={props.allWpPage.edges[0].node.template.process.ourProcess.featureBlockTwo.description}></ProgramCard>
-                            <ProgramCard icon={props.allWpPage.edges[0].node.template.process.ourProcess.featureBlockThree.icon.sourceUrl} smallHeader={props.allWpPage.edges[0].node.template.process.ourProcess.featureBlockThree.title} description={props.allWpPage.edges[0].node.template.process.ourProcess.featureBlockThree.description}></ProgramCard>
-                            <ProgramCard icon={props.allWpPage.edges[0].node.template.process.ourProcess.featureBlockFour.icon.sourceUrl} smallHeader={props.allWpPage.edges[0].node.template.process.ourProcess.featureBlockFour.title} description={props.allWpPage.edges[0].node.template.process.ourProcess.featureBlockFour.description}></ProgramCard>
+                        <ProgramsRow>
+                          {(Object.values(props.allWpPage.edges[0].node.template.process.ourProcess)).slice(Object.keys(props.allWpPage.edges[0].node.template.process.ourProcess).length-4).map((value,index)=>{
+                            return(
+                               <ProgramCard key={index} data={value}></ProgramCard>
+                            )
+                          })}
                         </ProgramsRow>
                     </ProcessContainer>
                   </ProcessWrapper>  

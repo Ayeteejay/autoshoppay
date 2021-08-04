@@ -55,9 +55,9 @@ const CardWrapper = styled.div`
 const ProgramCard = (props) =>{
     return(
         <CardWrapper>
-           <img src={props.icon} className="icon" alt={props.icon.altText}/>
-           <p className="small-header">{props.smallHeader}</p>
-           <p>{props.description}</p>
+           <img src={props.data.icon.sourceUrl} className="icon" alt={props.data.icon.altText}/>
+           <p className="small-header">{props.data.title}</p>
+           <p>{props.data.description}</p>
         </CardWrapper>
     )
 };

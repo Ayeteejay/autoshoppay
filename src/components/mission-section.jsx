@@ -65,7 +65,7 @@ const Mission = () => {
                 render={props=>(
                     <MissionWrapper style={{backgroundImage:`url(${props.allWpPage.edges[0].node.template.mission.ourMission.backgroundImage.sourceUrl})`,backgroundPosition:props.allWpPage.edges[0].node.template.mission.ourMission.backgroundPosition,backgroundRepeat:props.allWpPage.edges[0].node.template.mission.ourMission.backgroundRepeat, backgroundColor:props.allWpPage.edges[0].node.template.mission.ourMission.backgroundColor,backgroundSize:props.allWpPage.edges[0].node.template.mission.ourMission.backgroundSize}}>
                     <MissionContainer>
-                        <h5 className="white">{props.allWpPage.edges[0].node.template.mission.ourMission.subHeader}</h5>
+                        <p className="section-subheader white">{props.allWpPage.edges[0].node.template.mission.ourMission.subHeader}</p>
                         <h3 className="green quote">{props.allWpPage.edges[0].node.template.mission.ourMission.header}</h3>
                     </MissionContainer>
                 </MissionWrapper>

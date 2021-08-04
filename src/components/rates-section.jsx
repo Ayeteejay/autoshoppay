@@ -147,14 +147,16 @@ const Rates = () =>{
                     <RatesWrapper id="pricing" style={{background:props.allWpPage.edges[0].node.template.rates.ourRates.backgroundColor}}>
                       <DesktopContainer >
                           <DescriptionRow>
-                              <h5>{props.allWpPage.edges[0].node.template.rates.ourRates.subHeader}</h5>
+                              <p className="section-subheader">{props.allWpPage.edges[0].node.template.rates.ourRates.subHeader}</p>
                               <h3 className="blue">{props.allWpPage.edges[0].node.template.rates.ourRates.header}</h3>
                               <p dangerouslySetInnerHTML={{__html:`${props.allWpPage.edges[0].node.template.rates.ourRates.description}`}}></p>
                           </DescriptionRow>
                             <RatesRow>
-                              <RateCard data={props.allWpPage.edges[0].node.template.rates.ourRates.rateBlockOne}></RateCard>
-                              <RateCard data={props.allWpPage.edges[0].node.template.rates.ourRates.rateBlockTwo}></RateCard>
-                              <RateCard data={props.allWpPage.edges[0].node.template.rates.ourRates.rateBlockThree}></RateCard>
+                              {(Object.values(props.allWpPage.edges[0].node.template.rates.ourRates)).slice(Object.keys(props.allWpPage.edges[0].node.template.rates.ourRates).length-3).map((value,index)=>{
+                                return (
+                                  <RateCard key={index} data={value}></RateCard>
+                                )
+                              })}
                           </RatesRow>
                       </DesktopContainer>                      
                         <MobileContainer>
