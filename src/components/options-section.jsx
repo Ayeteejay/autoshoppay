@@ -14,11 +14,14 @@ background:${props=>props.theme.primaryColors.frost};
 
 const DesktopContainer = styled.div`
 width:75%;
-padding:${props=>props.theme.spacing.topBottom};
+padding:0;
 display:flex;
 justify-content:center;
 align-items:center;
 flex-flow:column;
+@media(min-width:${props=>props.theme.breakPoints.lg}){
+  padding:${props=>props.theme.spacing.bottom};
+}
 `
 const TechnologyRowDesktop = styled.div`
 display:none;

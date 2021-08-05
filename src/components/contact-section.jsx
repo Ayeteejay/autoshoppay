@@ -10,7 +10,6 @@ padding:${props=>props.theme.spacing.lgTopBottom};
 
 const ContactContainer = styled.div`
 width:75%;
-
 `
 
 const DescriptionRow = styled.div`

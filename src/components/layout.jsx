@@ -43,10 +43,10 @@ const theme = {
         extraFast:"250ms",
     },
     spacing:{
-        topBottom: "5rem 0",
-        lgTopBottom: "10rem 0",
-        bottom: "0 0 5rem 0",
-        top: "5rem 0 0 0",
+        topBottom: "7rem 0",
+        lgTopBottom: "14rem 0",
+        bottom: "0 0 7rem 0",
+        top: "7rem 0 0 0",
     }
 };
 
@@ -149,10 +149,10 @@ a.footer{
     color:${props=>props.theme.primaryColors.frost};
     transition:${props=>props.theme.animationSpeeds.fast};
     padding:1rem 0;
+    margin:1rem 0 0 0;
     display:block;
     text-align:center;
     max-width:100%;
-    margin:1rem 0 0 0;
     &:hover{
         color:${props=>props.theme.primaryColors.frost};
         background:${props=>props.theme.primaryColors.amber};
@@ -160,6 +160,7 @@ a.footer{
     }
     @media(min-width:${props=>props.theme.breakPoints.lg}){
         padding:1rem 1.5rem;
+        margin:1.5rem 0 0 0;
         max-width:50%;
     }
 }
@@ -177,6 +178,27 @@ a.footer{
     }
     @media(min-width:${props=>props.theme.breakPoints.lg}){
         padding:1rem 1.5rem;
+    }
+}
+.hero-cta{
+    font-weight:600;
+    border:1px solid ${props=>props.theme.primaryColors.amber};
+    background:${props=>props.theme.primaryColors.amber};
+    color:${props=>props.theme.primaryColors.frost};
+    transition:${props=>props.theme.animationSpeeds.fast};
+    padding:1rem 0;
+    margin:1rem 0 0 0;
+    display:block;
+    text-align:center;
+    max-width:100%;
+    &:hover{
+        background:none;
+        color:${props=>props.theme.primaryColors.amber};
+    }
+    @media(min-width:${props=>props.theme.breakPoints.lg}){
+        padding:1rem 1.5rem;
+        margin:1.5rem 0 0 0;
+        max-width:50%;
     }
 }
 ul.orange-bullet{

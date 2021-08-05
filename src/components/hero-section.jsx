@@ -33,7 +33,6 @@ align-items:center;
 const HeaderColumn = styled.div`
 padding:7rem 0;
 .description{
-  
 }
 @media(min-width:${props=>props.theme.breakPoints.md}){
   display:flex;
@@ -144,7 +143,7 @@ const Hero = (props) =>{
                   <div className="description">
                     <h1 className="white">{props.allWpPage.edges[0].node.template.hero.heroSection.header}</h1>           
                     <div className="white" dangerouslySetInnerHTML={{__html:`${props.allWpPage.edges[0].node.template.hero.heroSection.description}`}}></div>                    
-                    <a href={props.allWpPage.edges[0].node.template.hero.heroSection.button.url} className="frost-cta">{props.allWpPage.edges[0].node.template.hero.heroSection.button.title}</a>         
+                    <a href={props.allWpPage.edges[0].node.template.hero.heroSection.button.url} className="hero-cta">{props.allWpPage.edges[0].node.template.hero.heroSection.button.title}</a>         
                   </div>  
                 </HeaderColumn>
                 <FeaturedDesktopColumn>
