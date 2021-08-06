@@ -126,8 +126,8 @@ const Rates = () =>{
                                   }
                                   rate
                                   title
-                                }
-                                rateBlockThree {
+                                }                           
+                                rateBlockTwo {
                                   backgroundColor
                                   borderColor
                                   description
@@ -139,7 +139,7 @@ const Rates = () =>{
                                   rate
                                   title
                                 }
-                                rateBlockTwo {
+                                rateBlockThree {
                                   backgroundColor
                                   borderColor
                                   description
