@@ -51,8 +51,9 @@ const PartnersSlider = (props) =>{
         slidesToShow: 3,
         slidesToScroll: 1,
         autoplay: true,
-        speed: 3000,
+        speed:5000,
         autoplaySpeed:0,
+        pauseOnHover:false,
         cssEase: "linear",
         arrows:false,        
       }
