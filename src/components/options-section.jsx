@@ -129,7 +129,7 @@ const Options = () => {
                 <DescriptionRow>
                     <p className="section-subheader">{props.allWpPage.edges[0].node.template.options.technologyOptions.subHeader}</p>
                     <h3 className="blue">{props.allWpPage.edges[0].node.template.options.technologyOptions.header}</h3>
-                    <p dangerouslySetInnerHTML={{__html:`${props.allWpPage.edges[0].node.template.options.technologyOptions.description}`}}></p>
+                    <div dangerouslySetInnerHTML={{__html:`${props.allWpPage.edges[0].node.template.options.technologyOptions.description}`}}></div>
                 </DescriptionRow>
                 <TechnologyRowDesktop>
                     {(Object.values(props.allWpPage.edges[0].node.template.options.technologyOptions)).slice(Object.keys(props.allWpPage.edges[0].node.template.options.technologyOptions).length-4).map((value,index)=>{

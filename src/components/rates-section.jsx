@@ -99,37 +99,57 @@ const Rates = () =>{
                           ... on WpTemplate_Homepage {
                             templateName
                             rates {
-                              ourRates {
-                                backgroundColor
-                                backgroundPosition
-                                backgroundRepeat
-                                description
+                              background {
                                 backgroundImage {
                                   altText
                                   sourceUrl
                                 }
+                                backgroundPosition
+                                backgroundRepeat
+                                backgroundSize
+                                backgroundColor
+                              }
+                              description {
+                                description
                                 header
                                 subHeader
+                              }
+                              rates {
                                 rateBlockOne {
-                                  description
-                                  rate
-                                  title
                                   backgroundColor
                                   borderColor
-                                }                            
-                                rateBlockTwo {
                                   description
+                                  includeCtaLink
+                                  link {
+                                    title
+                                    url
+                                  }
                                   rate
                                   title
-                                  backgroundColor
-                                  borderColor
                                 }
                                 rateBlockThree {
-                                  description
-                                  rate
-                                  title
                                   backgroundColor
                                   borderColor
+                                  description
+                                  includeCtaLink
+                                  link {
+                                    title
+                                    url
+                                  }
+                                  rate
+                                  title
+                                }
+                                rateBlockTwo {
+                                  backgroundColor
+                                  borderColor
+                                  description
+                                  includeCtaLink
+                                  link {
+                                    title
+                                    url
+                                  }
+                                  rate
+                                  title
                                 }
                               }
                             }
@@ -140,19 +160,20 @@ const Rates = () =>{
                   }
                 }
                 
+                
                   
                 `}
                 render={props=>(
                   <React.Fragment>
-                    <RatesWrapper id="pricing" style={{background:props.allWpPage.edges[0].node.template.rates.ourRates.backgroundColor}}>
+                    <RatesWrapper id="pricing" style={{background:props.allWpPage.edges[0].node.template.rates.background.backgroundColor}}>
                       <DesktopContainer >
                           <DescriptionRow>
-                              <p className="section-subheader">{props.allWpPage.edges[0].node.template.rates.ourRates.subHeader}</p>
-                              <h3 className="blue">{props.allWpPage.edges[0].node.template.rates.ourRates.header}</h3>
-                              <p dangerouslySetInnerHTML={{__html:`${props.allWpPage.edges[0].node.template.rates.ourRates.description}`}}></p>
+                              <p className="section-subheader">{props.allWpPage.edges[0].node.template.rates.description.subHeader}</p>
+                              <h3 className="blue">{props.allWpPage.edges[0].node.template.rates.description.header}</h3>
+                              <div dangerouslySetInnerHTML={{__html:`${props.allWpPage.edges[0].node.template.rates.description.description}`}}></div>
                           </DescriptionRow>
                             <RatesRow>
-                              {(Object.values(props.allWpPage.edges[0].node.template.rates.ourRates)).slice(Object.keys(props.allWpPage.edges[0].node.template.rates.ourRates).length-3).map((value,index)=>{
+                              {(Object.values(props.allWpPage.edges[0].node.template.rates.rates)).map((value,index)=>{
                                 return (
                                   <RateCard key={index} data={value}></RateCard>
                                 )
@@ -161,7 +182,7 @@ const Rates = () =>{
                       </DesktopContainer>                      
                         <MobileContainer>
                           <RatesRowMobile>
-                                    <RateSlider data={props.allWpPage.edges[0].node.template.rates.ourRates}></RateSlider>
+                                    <RateSlider data={props.allWpPage.edges[0].node.template.rates.rates}></RateSlider>
                                 </RatesRowMobile>
                         </MobileContainer>
                     </RatesWrapper>
@@ -171,7 +192,6 @@ const Rates = () =>{
                 )}
             />
         </React.Fragment>
-
     )
 };
 export default Rates;

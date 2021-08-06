@@ -115,7 +115,7 @@ const Testimonial = (props) =>{
                         <DescriptionRow>
                             <p className="section-subheader">{props.allWpPage.edges[0].node.template.testimonials.ourTestimonials.subHeader}</p>      
                             <h3 className="blue">{props.allWpPage.edges[0].node.template.testimonials.ourTestimonials.header}</h3>                            
-                            <p dangerouslySetInnerHTML={{__html:`${props.allWpPage.edges[0].node.template.testimonials.ourTestimonials.description}`}}></p>                            
+                            <div dangerouslySetInnerHTML={{__html:`${props.allWpPage.edges[0].node.template.testimonials.ourTestimonials.description}`}}></div>                            
                         </DescriptionRow>
                     </DescriptionContainer>
                         <SliderRow>

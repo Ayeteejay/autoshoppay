@@ -138,7 +138,7 @@ const Technology = () =>{
                                 <div className="technology-description">
                                     <p className="section-subheader">{props.allWpPage.edges[0].node.template.technology.ourTechnology.subHeader}</p>
                                     <h3 className="blue">{props.allWpPage.edges[0].node.template.technology.ourTechnology.header}</h3>
-                                    <p dangerouslySetInnerHTML={{__html:`${props.allWpPage.edges[0].node.template.technology.ourTechnology.description}`}}></p>
+                                    <div dangerouslySetInnerHTML={{__html:`${props.allWpPage.edges[0].node.template.technology.ourTechnology.description}`}}></div>
                                     <div className="technology-bullets" dangerouslySetInnerHTML={{__html:`${props.allWpPage.edges[0].node.template.technology.ourTechnology.bullets}`}}>
                                     </div> 
                                 </div>      

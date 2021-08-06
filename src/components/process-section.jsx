@@ -116,7 +116,7 @@ const Process = () =>{
                           <div className="description">
                             <p className="section-subheader">{props.allWpPage.edges[0].node.template.process.ourProcess.subHeader}</p>
                             <h3>{props.allWpPage.edges[0].node.template.process.ourProcess.header}</h3>
-                            <p dangerouslySetInnerHTML={{__html:`${props.allWpPage.edges[0].node.template.process.ourProcess.description}`}}></p>  
+                            <div dangerouslySetInnerHTML={{__html:`${props.allWpPage.edges[0].node.template.process.ourProcess.description}`}}></div>  
                           </div>
                         </DescriptionRow>
                         <ProgramsRow>
