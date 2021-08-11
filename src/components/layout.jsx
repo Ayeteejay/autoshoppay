@@ -126,6 +126,7 @@ a.footer{
 }
 .amber-cta{
     font-weight:600;
+    text-align:center;
     border:1px solid ${props=>props.theme.primaryColors.amber};
     background:${props=>props.theme.primaryColors.amber};
     color:${props=>props.theme.primaryColors.frost};
