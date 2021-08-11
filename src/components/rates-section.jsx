@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import { graphql, StaticQuery } from 'gatsby';
 import RateCard from './rate-card.jsx';
@@ -9,6 +9,7 @@ display:flex;
 justify-content:center;
 align-items:center;
 flex-flow:column;
+position:relative;
 `;
 
 const DesktopContainer = styled.div`
@@ -85,7 +86,29 @@ height:25px;
 }
 `
 
+// Adding this full screen
+const ModalWindow = styled.div`
+height:100%;
+width:50%;
+background:${props=>props.theme.primaryColors.frost};
+position:absolute;
+top:50%;
+width:50%;
+margin:0 auto;
+transition:all ${props=>props.theme.animationSpeeds.fast};
+z-index:999;
+-webkit-box-shadow: 5px 5px 15px -4px rgba(0,0,0,0.44); 
+box-shadow: 5px 5px 15px -4px rgba(0,0,0,0.44);
+`
+
 const Rates = () =>{
+  const [modal, setModal] = useState(false);
+
+  const modalClickHandler = (iframeLink) =>{
+    setModal(!modal);
+    console.log(modal);
+  }
+
     return(
         <React.Fragment>
             <StaticQuery
@@ -166,6 +189,12 @@ const Rates = () =>{
                 render={props=>(
                   <React.Fragment>
                     <RatesWrapper id="pricing" style={{background:props.allWpPage.edges[0].node.template.rates.background.backgroundColor}}>
+
+                    <ModalWindow style={{opacity: modal === true ? "1" : "0",height:modal === true ? "150%" : "0",transform: modal === true ? `translate(0, -50%)` : ""}}>
+                    <iframe src="https://www.thrashermagazine.com/" title="Upload your statement to get a price quote." height="75%" width="75%" style={{border:"none"}}/>
+                      <button onClick={modalClickHandler}>close</button>
+                    </ModalWindow>
+            
                       <DesktopContainer >
                           <DescriptionRow>
                               <p className="section-subheader">{props.allWpPage.edges[0].node.template.rates.description.subHeader}</p>
@@ -175,7 +204,7 @@ const Rates = () =>{
                             <RatesRow>
                               {(Object.values(props.allWpPage.edges[0].node.template.rates.rates)).map((value,index)=>{
                                 return (
-                                  <RateCard key={index} data={value}></RateCard>
+                                  <RateCard key={index} data={value} modalSwitch={modalClickHandler}></RateCard>
                                 )
                               })}
                           </RatesRow>

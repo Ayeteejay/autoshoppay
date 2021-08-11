@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const CardWrapper = styled.div`
@@ -15,29 +15,30 @@ const CardWrapper = styled.div`
     }
 `
 
-const FullScreenOverlay = styled.div`
-height:100%;
-width:100%;
-background:blue;
-position:absolute;
-z-index:999;
-top:0;
-right:0;
-transition:${props=>props.theme.animationSpeeds.fast};
-`
+// const FullScreenOverlay = styled.div`
+// height:100%;
+// width:100%;
+// background:blue;
+// position:absolute;
+// z-index:999;
+// top:0;
+// right:0;
+// transition:${props=>props.theme.animationSpeeds.fast};
+// `
 
 const RateCard = (props) =>{
-    const [modal,setModal] = useState(false);
+    // const [modal,setModal] = useState(false);
 
-    const openModal = () =>{
-        setModal(!modal);
-        console.log(modal);
-    }
+    // const openModal = () =>{
+    //     setModal(!modal);
+    //     console.log(modal);
+    // }
 
+    // Show rate percentage or modal window button
     const rateRow = (conditional) => {
             if(conditional.includeCtaLink){
                 return (
-                    <button onClick={()=>openModal()} className="amber-cta">{conditional.link.title}</button>
+                    <button onClick={props.modalSwitch} className="amber-cta">{conditional.link.title}</button>
                 )
             }else{
                 return (
@@ -60,12 +61,14 @@ const RateCard = (props) =>{
             <p className="medium-header" style={{color:props.data.borderColor}}>{props.data.title}</p>
             <p>{props.data.description}</p>
 
-            <FullScreenOverlay style={{opacity: modal === true ? "1" : "0",height:modal === true ? "100%" : "0"}}>
+
+
+            {/* <FullScreenOverlay style={{opacity: modal === true ? "1" : "0",height:modal === true ? "100%" : "0"}}>
                 {iframeWindow(props.data)}
-            </FullScreenOverlay>
+            </FullScreenOverlay> */}
+
 
            {rateRow(props.data)}
-
         </CardWrapper>
     )
 };
