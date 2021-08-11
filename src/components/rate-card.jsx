@@ -18,8 +18,9 @@ const CardWrapper = styled.div`
 const FullScreenOverlay = styled.div`
 height:100%;
 width:100%;
-background:white;
+background:blue;
 position:absolute;
+z-index:999;
 top:0;
 right:0;
 transition:${props=>props.theme.animationSpeeds.fast};
@@ -33,17 +34,38 @@ const RateCard = (props) =>{
         console.log(modal);
     }
 
+    const rateRow = (conditional) => {
+            if(conditional.includeCtaLink){
+                return (
+                    <button onClick={()=>openModal()} className="amber-cta">{conditional.link.title}</button>
+                )
+            }else{
+                return (
+                    <p className="rate" style={{borderTop:`1px solid ${conditional.borderColor}`,color:conditional.borderColor}}>{conditional.rate}</p>
+                )
+            }
+    }
+
+    const iframeWindow = (conditional) => {
+        if(conditional.includeCtaLink){
+            return (
+                <iframe src={conditional.link.url} title="Upload your statement to get a price quote." height="100%" width="100%"/>
+            )
+        }
+    }
+
+
     return (
         <CardWrapper style={{border:`1px solid ${props.data.borderColor}`, background:props.data.backgroundColor}}>
             <p className="medium-header" style={{color:props.data.borderColor}}>{props.data.title}</p>
             <p>{props.data.description}</p>
-            <p className="rate" style={{display: props.data.includeCtaLink === null ? "block" : "none",borderTop:`1px solid ${props.data.borderColor}`,color:props.data.borderColor}}>{props.data.rate}</p>      
-           <button onClick={()=>openModal()} className="amber-cta" style={{display: props.data.includeCtaLink === null ? "none" : "block"}} >{props.data.link === null ? "" : props.data.link.title}</button>
 
-            <FullScreenOverlay style={{opacity: modal === true ? "1" : "0",height:modal === true ? "100%" : "0"}}></FullScreenOverlay>
+            <FullScreenOverlay style={{opacity: modal === true ? "1" : "0",height:modal === true ? "100%" : "0"}}>
+                {iframeWindow(props.data)}
+            </FullScreenOverlay>
 
-           {/* Original working link below */} 
-           {/* <a onClick={()=>setModal(true)} className="amber-cta" style={{display: props.data.includeCtaLink === null ? "none" : "block"}} href={props.data.link === null ? "" : props.data.link.url}>{props.data.link === null ? "" : props.data.link.title}</a> */}
+           {rateRow(props.data)}
+
         </CardWrapper>
     )
 };
