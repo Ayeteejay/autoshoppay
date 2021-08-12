@@ -191,7 +191,7 @@ const Rates = () =>{
                     <RatesWrapper id="pricing" style={{background:props.allWpPage.edges[0].node.template.rates.background.backgroundColor}}>
 
                     <ModalWindow style={{opacity: modal === true ? "1" : "0",height:modal === true ? "150%" : "0",transform: modal === true ? `translate(0, -50%)` : ""}}>
-                    <iframe src="https://www.thrashermagazine.com/" title="Upload your statement to get a price quote." height="75%" width="75%" style={{border:"none"}}/>
+                    <iframe src="" title="Upload your statement to get a price quote." height="75%" width="75%" style={{border:"none"}}/>
                       <button onClick={modalClickHandler}>close</button>
                     </ModalWindow>
             

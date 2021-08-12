@@ -134,7 +134,7 @@ const Contact = (props) =>{
                         <FormRow>
                             <ContactForm>
                             <input className="name" type="text" placeholder="Your name"></input>
-                            <input className="shop" type="text" placeholder="Your shop name"></input>
+                            <input className="shop" type="text" placeholder="Your dealer name"></input>
                             <input className="email" type="text" placeholder="Your email address"></input>
                             <input className="phone" type="text" placeholder="Your phone number"></input>
                             <textarea className="message" placeholder="Message"></textarea>
