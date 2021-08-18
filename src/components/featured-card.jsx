@@ -10,6 +10,9 @@ padding:3.5rem;
 -webkit-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.5); 
 box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.5);
 margin:1rem 0;
+@media(min-width:${props=>props.theme.breakPoints.lg}){
+    padding:2rem 3.5rem 1rem 3.5rem;
+}
 `
 
 const CompanyRow = styled.div`
