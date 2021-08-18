@@ -89,26 +89,53 @@ height:25px;
 // Adding this full screen
 const ModalWindow = styled.div`
 height:100%;
-width:50%;
+width:100%;
 background:${props=>props.theme.primaryColors.frost};
 position:absolute;
-top:50%;
-width:50%;
+top:0;
 margin:0 auto;
 transition:all ${props=>props.theme.animationSpeeds.fast};
 z-index:999;
 -webkit-box-shadow: 5px 5px 15px -4px rgba(0,0,0,0.44); 
 box-shadow: 5px 5px 15px -4px rgba(0,0,0,0.44);
+.modal-close{
+  position:absolute;
+  left:-3%;
+  top:-3%;
+  font-weight:600;
+  border:1px solid ${props=>props.theme.primaryColors.amber};
+  background:${props=>props.theme.primaryColors.amber};
+  color:${props=>props.theme.primaryColors.frost};
+  transition:${props=>props.theme.animationSpeeds.fast};
+  font-size:1.25rem;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  padding:1rem 0;
+  &:hover{
+      background:white;
+      color:${props=>props.theme.primaryColors.amber};
+  }
+}
 `
 
 const Rates = () =>{
   const [modal, setModal] = useState(false);
 
-  const modalClickHandler = (iframeLink) =>{
+  const modalClickHandler = () =>{
     setModal(!modal);
-    console.log(modal);
   }
 
+  const iframeWindow = (conditional) => {
+    if(conditional.includeCtaLink){
+        return (
+            <iframe src={conditional.link.url} title="Upload your statement to get a price quote." height="100%" width="100%" style={{border:"none"}}/>
+        )
+    }
+}
     return(
         <React.Fragment>
             <StaticQuery
@@ -183,18 +210,12 @@ const Rates = () =>{
                   }
                 }
                 
-                
+            
                   
                 `}
                 render={props=>(
                   <React.Fragment>
                     <RatesWrapper id="pricing" style={{background:props.allWpPage.edges[0].node.template.rates.background.backgroundColor}}>
-
-                    <ModalWindow style={{opacity: modal === true ? "1" : "0",height:modal === true ? "150%" : "0",transform: modal === true ? `translate(0, -50%)` : ""}}>
-                    <iframe src="" title="Upload your statement to get a price quote." height="75%" width="75%" style={{border:"none"}}/>
-                      <button onClick={modalClickHandler}>close</button>
-                    </ModalWindow>
-            
                       <DesktopContainer >
                           <DescriptionRow>
                               <p className="section-subheader">{props.allWpPage.edges[0].node.template.rates.description.subHeader}</p>
@@ -204,7 +225,14 @@ const Rates = () =>{
                             <RatesRow>
                               {(Object.values(props.allWpPage.edges[0].node.template.rates.rates)).map((value,index)=>{
                                 return (
-                                  <RateCard key={index} data={value} modalSwitch={modalClickHandler}></RateCard>
+                                  <React.Fragment key={index}>
+                                <ModalWindow style={{display: value.link !== null ? "block" : "none",opacity: modal === true ? "1" : "0",height:modal === true ? "250%" : "0",transform: modal === true ? `translate(0, -75%)` : ""}}>
+                      
+                                {iframeWindow(value)}                        
+                                <button className="modal-close" onClick={modalClickHandler}>&#10005;</button>     
+                              </ModalWindow>
+                          <RateCard data={value} modalSwitch={modalClickHandler} ></RateCard>
+                                  </React.Fragment>              
                                 )
                               })}
                           </RatesRow>

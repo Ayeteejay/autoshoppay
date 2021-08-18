@@ -135,6 +135,7 @@ a.footer{
     justify-content:center;
     align-items:center;
     padding:1rem 0;
+    width:100%;
     &:hover{
         background:none;
         color:${props=>props.theme.primaryColors.amber};
