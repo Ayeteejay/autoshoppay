@@ -16,7 +16,9 @@ margin:1rem 0;
 `
 
 const CompanyRow = styled.div`
-
+img{
+    max-width:35%;
+}
 `
 
 const MonthlyRow = styled.div`
