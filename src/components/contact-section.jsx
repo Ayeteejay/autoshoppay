@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import {graphql, StaticQuery} from 'gatsby';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
 const ContactWrapper = styled.div`
 display:flex;
@@ -32,7 +34,7 @@ grid-gap:2rem;
 grid-template-columns:1fr;
 grid-template-rows:repeat(6,1fr);
 grid-template-areas: "your-name"
-"your-shop"
+"your-dealer"
 "your-email"
 "your-phone"
 "your-message"
@@ -41,6 +43,7 @@ input,textarea{
     padding:1rem;
     font-family:"Work Sans", san-serif;
     font-size:1rem;
+    width:100%;
     border:1px solid ${props=>props.theme.primaryColors.frost};
     color:${props=>props.theme.primaryColors.mintGreen};
     transition:all ${props=>props.theme.animationSpeeds.fast};
@@ -58,10 +61,9 @@ input,textarea{
 }
 .name{
     grid-area:your-name;
-
 }        
-.shop{
-    grid-area:your-shop;
+.dealer{
+    grid-area:your-dealer;
 }
 .message{
     grid-area:your-message;
@@ -81,13 +83,33 @@ input,textarea{
 @media(min-width:${props=>props.theme.breakPoints.md}){
     grid-template-columns:repeat(3,1fr);
     grid-template-rows:repeat(3,1fr);
-    grid-template-areas: "your-name your-shop your-message"
+    grid-template-areas: "your-name your-dealer your-message"
                         "your-email your-phone your-message"
                         "submit-button . .";
+}
+.error-message{
+    color:${props=>props.theme.primaryColors.amber};
 }
 `
 
 const Contact = (props) =>{
+    const formik = useFormik({
+        initialValues: { fullName: "", dealerName: "", yourMessage:"", email: "",phoneNumber: "" },
+        validationSchema: Yup.object({
+          fullName: Yup.string()            
+            .required("Full name is required"),
+          dealerName: Yup.string()            
+            .required("Dealer name is required"),
+          yourMessage: Yup.string(),
+          email: Yup.string()
+            .email("Invalid email address")
+            .required("Email address is required"),
+          phoneNumber: Yup.number().positive().integer(),
+        }),
+        onSubmit: (values) => {
+          alert(JSON.stringify(values, null, 2));
+        },
+      });
     return (
         <React.Fragment>
             <StaticQuery query={graphql`
@@ -132,13 +154,37 @@ const Contact = (props) =>{
                             </div>
                         </DescriptionRow>
                         <FormRow>
-                            <ContactForm>
-                            <input className="name" type="text" placeholder="Your name"></input>
-                            <input className="shop" type="text" placeholder="Your dealer name"></input>
-                            <input className="email" type="text" placeholder="Your email address"></input>
-                            <input className="phone" type="text" placeholder="Your phone number"></input>
-                            <textarea className="message" placeholder="Message"></textarea>
-                            <button className="submit amber-cta">Submit</button>
+                            <ContactForm onSubmit={formik.handleSubmit}>
+                            <div className="name">
+                            <input
+                            placeholder="Your name" id="fullName" type="text"  {...formik.getFieldProps("fullName")}
+                            />
+                            {formik.touched.fullName && formik.errors.fullName ? <div className="error-message">{formik.errors.fullName}</div> : null}
+                            </div>
+
+                            <div className="dealer">
+                            <input placeholder="Your dealer name" id="dealerName" type="text"  {...formik.getFieldProps("dealerName")}
+                            />
+                            {formik.touched.dealerName && formik.errors.dealerName ? <div className="error-message">{formik.errors.dealerName}</div> : null}
+                            </div>
+
+                            <div className="email">
+                            <input placeholder="Your email address" id="email" type="email"  {...formik.getFieldProps("email")}
+                            />
+                            {formik.touched.email && formik.errors.email ? <div className="error-message">{formik.errors.email}</div> : null}
+                            </div>
+
+                            <div className="phone">
+                            <input placeholder="Your phone number" id="phoneNumber" type="text"  {...formik.getFieldProps("phoneNumber")}
+                            />
+                            {formik.touched.phoneNumber && formik.errors.phoneNumber ? <div className="error-message">{formik.errors.phoneNumber}</div> : null}
+                            </div>
+
+                            <textarea
+                            className="message" placeholder="Message" id="yourMessage" type="text"  {...formik.getFieldProps("yourMessage")}
+                            />
+
+                            <button className="submit amber-cta">Submit</button>                            
                             </ContactForm>   
                         </FormRow>
                     </ContactContainer>
