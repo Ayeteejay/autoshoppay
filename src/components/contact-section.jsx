@@ -26,88 +26,118 @@ padding:${props=>props.theme.spacing.bottom};
 `
 
 const FormRow = styled.div`
-`
-
-const ContactForm = styled.form`
-display:grid;
-grid-gap:2rem;
-grid-template-columns:1fr;
-grid-template-rows:repeat(6,1fr);
-grid-template-areas: "your-name"
-"your-dealer"
-"your-email"
-"your-phone"
-"your-message"
-"submit-button";
-input,textarea{
-    padding:1rem;
-    font-family:"Work Sans", san-serif;
-    font-size:1rem;
-    width:100%;
-    border:1px solid ${props=>props.theme.primaryColors.frost};
-    color:${props=>props.theme.primaryColors.mintGreen};
-    transition:all ${props=>props.theme.animationSpeeds.fast};
-    background:none;
-    &::placeholder{
-        color:${props=>props.theme.primaryColors.frost};
-    };
-    &:focus{
-        background:${props=>props.theme.primaryColors.mintGreen};
-        color:${props=>props.theme.primaryColors.sable};
-        &::placeholder{
-            color:${props=>props.theme.primaryColors.sable};
-        }
+.success-message{
+  opacity:0;
+  visibility:hidden;
+  max-height:0;
+  transition: all ${props=>props.theme.animationSpeeds.slow};
+}
+.show-success-message{
+  opacity:1;
+  visibility:visible;
+  max-height:5000px;
+}
+.contact-form{
+  transition:all ${props=>props.theme.animationSpeeds.fast};
+  max-height:5000px;
+  visibility: visible;
+  display:grid;
+  grid-template-columns:1fr;
+  grid-template-rows:repeat(6,1fr);
+  grid-template-areas: "your-name"
+  "your-dealer"
+  "your-email"
+  "your-phone"
+  "your-message"
+  "submit-button";
+  input,textarea{
+      padding:1rem;
+      font-family:"Work Sans", san-serif;
+      font-size:1rem;
+      width:100%;
+      border:1px solid ${props=>props.theme.primaryColors.frost};
+      color:${props=>props.theme.primaryColors.mintGreen};
+      transition:all ${props=>props.theme.animationSpeeds.fast};
+      background:none;
+      &::placeholder{
+          color:${props=>props.theme.primaryColors.frost};
+      };
+      &:focus{
+          background:${props=>props.theme.primaryColors.mintGreen};
+          color:${props=>props.theme.primaryColors.sable};
+          &::placeholder{
+              color:${props=>props.theme.primaryColors.sable};
+          }
+      }
+  }
+  .name{
+      grid-area:your-name;
+  }        
+  .dealer{
+      grid-area:your-dealer;
+  }
+  .message{
+      grid-area:your-message;
+  };
+  .email{
+      grid-area:your-email;
+  };
+  .phone{
+      grid-area:your-phone;
+  };
+  .message{
+      grid-area:your-message;
+  }
+  .submit{
+      grid-area:submit-button;
+      padding:5% 0 0 0;
+  }
+  @media(min-width:${props=>props.theme.breakPoints.md}){
+      grid-template-columns:repeat(3,1fr);
+      grid-template-rows:repeat(3,1fr);
+      grid-template-areas: "your-name your-dealer your-message"
+                          "your-email your-phone your-message"
+                          "submit-button . .";
+  }
+  .error-message{
+      color:${props=>props.theme.primaryColors.amber};
+      padding:2% 0 5% 0;
+      font-size:0.75rem;    
+  }
+  @media(min-width:${props=>props.theme.breakPoints.lg}){
+    grid-gap:2rem;
+    .submit{
+      padding:0;
     }
+  }
 }
-.name{
-    grid-area:your-name;
-}        
-.dealer{
-    grid-area:your-dealer;
-}
-.message{
-    grid-area:your-message;
-};
-.email{
-    grid-area:your-email;
-};
-.phone{
-    grid-area:your-phone;
-};
-.message{
-    grid-area:your-message;
-}
-.submit{
-    grid-area:submit-button;
-}
-@media(min-width:${props=>props.theme.breakPoints.md}){
-    grid-template-columns:repeat(3,1fr);
-    grid-template-rows:repeat(3,1fr);
-    grid-template-areas: "your-name your-dealer your-message"
-                        "your-email your-phone your-message"
-                        "submit-button . .";
-}
-.error-message{
-    color:${props=>props.theme.primaryColors.amber};
+.successful-submission{
+  opacity:0;
+  visibility:hidden ;
+  max-height:0;
 }
 `
-
 const Contact = (props) =>{
     const formik = useFormik({
         initialValues: { fullName: "", dealerName: "", yourMessage:"", email: "",phoneNumber: "" },
         validationSchema: Yup.object({
           fullName: Yup.string()            
-            .required("Full name is required"),
-          dealerName: Yup.string()            
-            .required("Dealer name is required"),
+            .required("Full name is required."),
+          dealerName: Yup.string(),            
           yourMessage: Yup.string(),
           email: Yup.string()
-            .email("Invalid email address")
-            .required("Email address is required"),
+            .email("Invalid email address.")
+            .required("Email address is required."),
           phoneNumber: Yup.number().positive().integer(),
         }),
         onSubmit: (values) => {
-          alert(JSON.stringify(values, null, 2));
+          const contactForm = document.querySelector(".contact-form");          
+          contactForm.classList.toggle("successful-submission");           
+          const successMessage = document.querySelector(".success-message");
+          successMessage.classList.toggle("show-success-message");      
+
+          // Testing successful form submission
+          alert(JSON.stringify(values, null, 2));                       
         },
       });
     return (
@@ -154,10 +184,10 @@ const Contact = (props) =>{
                             </div>
                         </DescriptionRow>
                         <FormRow>
-                            <ContactForm onSubmit={formik.handleSubmit}>
+                            <form className="contact-form" onSubmit={formik.handleSubmit}>
                             <div className="name">
                             <input
-                            placeholder="Your name" id="fullName" type="text"  {...formik.getFieldProps("fullName")}
+                            placeholder="Your name*" id="fullName" type="text"  {...formik.getFieldProps("fullName")}
                             />
                             {formik.touched.fullName && formik.errors.fullName ? <div className="error-message">{formik.errors.fullName}</div> : null}
                             </div>
@@ -165,11 +195,10 @@ const Contact = (props) =>{
                             <div className="dealer">
                             <input placeholder="Your dealer name" id="dealerName" type="text"  {...formik.getFieldProps("dealerName")}
                             />
-                            {formik.touched.dealerName && formik.errors.dealerName ? <div className="error-message">{formik.errors.dealerName}</div> : null}
                             </div>
 
                             <div className="email">
-                            <input placeholder="Your email address" id="email" type="email"  {...formik.getFieldProps("email")}
+                            <input placeholder="Your email address*" id="email" type="email"  {...formik.getFieldProps("email")}
                             />
                             {formik.touched.email && formik.errors.email ? <div className="error-message">{formik.errors.email}</div> : null}
                             </div>
@@ -177,15 +206,21 @@ const Contact = (props) =>{
                             <div className="phone">
                             <input placeholder="Your phone number" id="phoneNumber" type="text"  {...formik.getFieldProps("phoneNumber")}
                             />
-                            {formik.touched.phoneNumber && formik.errors.phoneNumber ? <div className="error-message">{formik.errors.phoneNumber}</div> : null}
                             </div>
 
                             <textarea
                             className="message" placeholder="Message" id="yourMessage" type="text"  {...formik.getFieldProps("yourMessage")}
                             />
+                            <div className="submit">
+                            <button className="amber-cta" type="submit">Submit</button>       
+                            </div>
+                                       
+                            </form>   
 
-                            <button className="submit amber-cta">Submit</button>                            
-                            </ContactForm>   
+                            <div className="success-message">
+                              <h3 className="green">Thank you!</h3>
+                              <p className="white">We will be in touch with you shortly.</p>
+                            </div>
                         </FormRow>
                     </ContactContainer>
                 </ContactWrapper>
